@@ -43,16 +43,17 @@ ini_set('display_errors', 0);
                     $pdo = new Database();
                     $dbh = $pdo->getDBH();
                     $stmt = $dbh->prepare('select * from userdata where username = ?');
+                    $stmt_nick = $dbh->prepare('select nickname from userdata where username = ?');
                     $stmt->execute([$_POST['username']]);
                     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
                     //emailがDB内に存在しているか確認
                     if (!isset($row['username'])) {
-                      echo 'Incorrect Username';
+                      echo 'Email addressが間違っています';
                       print <<<EOH
                       <br>
                       <br>
-                      <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">Back to Login page</button>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">ログインページに戻る</button>
                     EOH;
                       return false;
                     }
@@ -61,20 +62,20 @@ ini_set('display_errors', 0);
                     if (password_verify($_POST['password'], $row['password'])) {
                       session_regenerate_id(true); //session_idを新しく生成し、置き換える
                       $_SESSION['USERNAME'] = $row['username'];
-                      echo "Welcome {$_SESSION['USERNAME']}!";
+                      echo "Welcome {$stmt_nickname->execute([$_POST['username']]);}!";
                       echo '<br>';
                       print <<<EOH
                       <br>
                       <br>
-                      <button type="submit"class="btn btn-default" onclick="location.href='./dashboard.php'">Go to the Ranking</button>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./dashboard.php'">メインページへ移動する</button>
                     EOH;
 
                     } else {
-                      echo 'Incorrect password';
+                      echo 'パスワードが間違っています';
                       print <<<EOH
                       <br>
                       <br>
-                      <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">Back to Login Page</button>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">ログインページに戻る</button>
                     EOH;
                       return false;
                     }    

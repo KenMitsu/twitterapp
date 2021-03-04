@@ -47,11 +47,11 @@ require_once('../class.php');
                     if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i', $_POST['password'])) {
                       $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                     } else {
-                      echo 'Set the password using at least 8 characters including 1 or more half-width alphanumeric characters.';
+                      echo 'パスワードは半角英数字をそれぞれ1文字以上を含む、合計8文字以上で設定してください。';
                       print <<<EOH
                       <br>
                       <br>
-                      <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">Sign Up</button>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">登録画面に戻る</button>
                     EOH;
                       return false;
                     }
@@ -59,20 +59,20 @@ require_once('../class.php');
                     try {
                       $stmt = $pdo->prepare("insert into userdata(username, password) values(?, ?)");
                       $stmt->execute([$username, $password]);
-                      echo 'Registered correctly!';
+                      echo '登録完了!';
                       print <<<EOH
                       <br>
-                      Press the button below to log in.
+                      下のボタンをクリックしてください。
                       <br>
                       <br>
-                      <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">Go to Login Page</button>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">ログインページに移動する</button>
                     EOH;
                     } catch (\Exception $e) {
-                      echo 'The username is already in use.'. "<br/>";
+                      echo 'このEmail addressはすでに使われています'. "<br/>";
                       print <<<EOH
                       <br>
                       <br>
-                      <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">Back to Account Registration Page</button>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">登録画面に戻る</button>
                     EOH;
                     } 
                     ?>
