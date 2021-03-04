@@ -73,7 +73,7 @@ require_once('../class.php');
                       $stmt = $pdo->prepare("insert into userdata(username, password, nickname, account_id) values(?, ?, ?, ?)");
                       $stmt->execute([$username, $password, $nickname, $account_id]);
                       echo '登録完了!';
-                      echo is_null($nickname);
+                      echo $nickname;
                       print <<<EOH
                       <br>
                       下のボタンをクリックしてください。
