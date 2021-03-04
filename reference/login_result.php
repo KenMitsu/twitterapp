@@ -40,13 +40,13 @@ ini_set('display_errors', 0);
             <div class='form-group'>
                 <?php 
                     //DB内でPOSTされたメールアドレスを検索
-                    $pdo = new Database();
-                    $dbh = $pdo->getDBH();
-                    $stmt = $dbh->prepare('select * from userdata where username = ?');
-                    $stmt_nick = $dbh->prepare('select nickname from userdata where username = ?');
+                    $dbh = new Database();
+                    $pdo = $dbh->getDBH();
+                    $stmt = $pdo->prepare('select * from userdata where username = ?');
                     $stmt->execute([$_POST['username']]);
-                    $nickname = $stmt_nick->execute([$_POST['username']])；
                     $row = $stmt->fetch(PDO::FETCH_ASSOC);
+                    //$stmt_nick = $pdo->prepare('select nickname from userdata where username = ?');
+                    //$nickname = $stmt_nick->execute([$_POST['username']])；
 
                     //emailがDB内に存在しているか確認
                     if (!isset($row['username'])) {
@@ -103,3 +103,4 @@ ini_set('display_errors', 0);
     </script>
   </body>
 </html>
+
