@@ -71,6 +71,7 @@ require_once('../class.php');
                       <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">ログインページに移動する</button>
                     EOH;
                     } catch (\Exception $e) {
+                      echo $e->getMessage() . "<br/>"
                       echo 'このEmail addressはすでに使われています'. "<br/>";
                       print <<<EOH
                       <br>
