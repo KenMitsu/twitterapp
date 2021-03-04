@@ -73,7 +73,7 @@ require_once('../class.php');
                     EOH;
                     } catch (\Exception $e) {
                       echo 'このEmail addressはすでに使われています'. "<br/>";
-                      echo $account_id, $nickname;
+                      echo $account_id, $nickname, $password, $username;
                       print <<<EOH
                       <br>
                       <br>
