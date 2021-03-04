@@ -43,6 +43,12 @@
                     <p>Set the password using at least 8 characters including 1 or more half-width alphanumeric characters.</p>
                   </label>
                 </div>
+                <div class='form-group'>
+                  <input class='form-control' id="nickname" placeholder='nickname' type='text' name="nickname" autocorrect="off" autocapitalize="off">
+                </div>
+                <div class='form-group'>
+                  <input class='form-control' id="account_id" placeholder='account_id' type='text' name="account_id" autocorrect="off" autocapitalize="off">
+                </div>
                 <button type="submit"class="btn btn-default">Sign Up</button>
               </div>
             </fieldset>
