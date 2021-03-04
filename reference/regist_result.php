@@ -50,7 +50,6 @@ require_once('../class.php');
                     //パスワードの正規表現
                     if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i', $_POST['password'])) {
                       $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                      echo 'correct password';
                     } else {
                       echo 'パスワードは半角英数字をそれぞれ1文字以上を含む、合計8文字以上で設定してください。';
                       print <<<EOH
@@ -62,8 +61,8 @@ require_once('../class.php');
                     }
                     //登録処理
                     try {
-                      echo "今から登録処理です";
                       $stmt = $pdo->prepare("insert into userdata(username, password) values(?, ?)");
+                      echo "第一関門突破";
                       $stmt->execute([$username, $password]);
                       echo '登録完了!';
                       print <<<EOH
@@ -75,7 +74,7 @@ require_once('../class.php');
                     EOH;
                     } catch (\Exception $e) {
                       echo 'このEmail addressはすでに使われています'. "<br/>";
-                      echo $account_id, $nickname;
+                      print "DB ERROR: " . $e->getMessage() . "<br/>";
                       print <<<EOH
                       <br>
                       <br>
