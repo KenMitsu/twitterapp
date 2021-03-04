@@ -61,9 +61,8 @@ require_once('../class.php');
                     }
                     //登録処理
                     try {
-                      $stmt = $pdo->prepare("insert into userdata(username, password) values(?, ?)");
-                      echo "第一関門突破";
-                      $stmt->execute([$username, $password]);
+                      $stmt = $pdo->prepare("insert into userdata(username, password, nickname, account_id) values(?, ?, ?, ?)");
+                      $stmt->execute([$username, $password, $nickname, $account_id]);
                       echo '登録完了!';
                       print <<<EOH
                       <br>
@@ -74,7 +73,6 @@ require_once('../class.php');
                     EOH;
                     } catch (\Exception $e) {
                       echo 'このEmail addressはすでに使われています'. "<br/>";
-                      print "DB ERROR: " . $e->getMessage() . "<br/>";
                       print <<<EOH
                       <br>
                       <br>
