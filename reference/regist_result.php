@@ -50,6 +50,7 @@ require_once('../class.php');
                     //パスワードの正規表現
                     if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i', $_POST['password'])) {
                       $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                      echo 'correct password';
                     } else {
                       echo 'パスワードは半角英数字をそれぞれ1文字以上を含む、合計8文字以上で設定してください。';
                       print <<<EOH
