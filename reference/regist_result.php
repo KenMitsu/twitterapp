@@ -43,6 +43,9 @@ require_once('../class.php');
 
                     //POSTのValidate
                     $username = $_POST['username'];
+                    $nickname = $_POST['nickname'];
+                    $account_id = $_POST['account_id'];
+
                     //パスワードの正規表現
                     if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i', $_POST['password'])) {
                       $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
@@ -57,8 +60,8 @@ require_once('../class.php');
                     }
                     //登録処理
                     try {
-                      $stmt = $pdo->prepare("insert into userdata(username, password) values(?, ?)");
-                      $stmt->execute([$username, $password]);
+                      $stmt = $pdo->prepare("insert into userdata(username, password, nickname, account_id) values(?, ?, ?, ?)");
+                      $stmt->execute([$username, $password, $nickname, $account_id]);
                       echo '登録完了!';
                       print <<<EOH
                       <br>

@@ -45,11 +45,12 @@ ini_set('display_errors', 0);
                     $stmt = $dbh->prepare('select * from userdata where username = ?');
                     $stmt_nick = $dbh->prepare('select nickname from userdata where username = ?');
                     $stmt->execute([$_POST['username']]);
+                    $nickname = $stmt_nick->execute([$_POST['username']])；
                     $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
                     //emailがDB内に存在しているか確認
                     if (!isset($row['username'])) {
-                      echo 'Email addressが間違っています';
+                      echo 'Email addressが間違っています。もしくは登録されていません。';
                       print <<<EOH
                       <br>
                       <br>
@@ -62,7 +63,7 @@ ini_set('display_errors', 0);
                     if (password_verify($_POST['password'], $row['password'])) {
                       session_regenerate_id(true); //session_idを新しく生成し、置き換える
                       $_SESSION['USERNAME'] = $row['username'];
-                      echo "Welcome {$stmt_nickname->execute([$_POST['username']]);}!";
+                      echo "Welcome {$nickname}!";
                       echo '<br>';
                       print <<<EOH
                       <br>
