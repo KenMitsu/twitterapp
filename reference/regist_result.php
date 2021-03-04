@@ -66,7 +66,6 @@ require_once('../class.php');
                       <br><br>
                       <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">登録画面に戻る</button>
                     EOH;
-                      return false;
                     }
 
                     //登録処理
