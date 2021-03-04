@@ -63,7 +63,7 @@ require_once('../class.php');
                       <br>
                       Press the button below to log in.
                       <br>
-                      <button type="submit"class="btn btn-default" onclick="location.href='./index.html'">Go to Login Page</button>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">Go to Login Page</button>
                     EOH;
                     } catch (\Exception $e) {
                       echo 'The username is already in use.'. "<br/>";
