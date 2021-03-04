@@ -60,6 +60,7 @@ require_once('../class.php');
                     }
 
                     //nicknameがあるかどうか
+                    /*
                     if(!isset($nickname)){
                       echo 'ニックネームを入力してください'
                       print <<<EOH
@@ -68,7 +69,7 @@ require_once('../class.php');
                     EOH;
                       return false;
                     }
-                    
+                    */
 
                     //登録処理
                     try {
