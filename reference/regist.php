@@ -1,3 +1,46 @@
+<?php
+require_once('../config.php');
+require_once('../class.php');
+session_start();
+ini_set('display_errors', 0);
+
+    //DB内でPOSTされたメールアドレスを検索
+        $pdo = new Database();
+        $dbh = $pdo->getDBH();
+        $stmt = $dbh->prepare('select * from userdata where username = ?');
+        $stmt->execute([$_POST['username']]);
+        $row = $stmt->fetch(PDO::FETCH_ASSOC);
+
+
+        
+        //emailがDB内に存在しているか確認
+        if (!isset($row['username'])) {
+          echo 'Incorrect Username';
+          print <<<EOH
+          <input type="button"class="square_btn2" onclick="location.href='./login.html'" value="Back to Login page">;
+        EOH;
+          return false;
+        }
+
+        //パスワード確認後sessionにメールアドレスを渡す
+        if (password_verify($_POST['password'], $row['password'])) {
+          session_regenerate_id(true); //session_idを新しく生成し、置き換える
+          $_SESSION['USERNAME'] = $row['username'];
+          echo "Welcome {$_SESSION['USERNAME']}!";
+          echo '<br>';
+          print <<<EOH
+          <input type="button"class="square_btn2" onclick="location.href='./hierapolis-gh-pages/dashboard.php'" value="Go to Menu">
+        EOH;
+
+        } else {
+          echo 'パスワードが間違っています。';
+          print <<<EOH
+          <input type="button"class="square_btn2" onclick="location.href='./login.html'" value="Back to Login Page">
+        EOH;
+          return false;
+        }
+?>
+
 <!DOCTYPE html>
 <html class='no-js' lang='en'>
   <head>
@@ -21,8 +64,7 @@
               <div class='logo-icon'>
                 <i class='icon-beer'></i>
               </div>
-              CINC Twitter 
-              システム 
+              CINC Twitter システム 
             </h1>
           </div>
         </div>
@@ -32,8 +74,6 @@
           <form action="index_result.php" method="post">
             <fieldset class='text-center'>  <!--FIELDSETはフォームの入力項目をグループ化する-->
               <legend>Login to your account</legend>　<!--<LEGEND>～</LEGEND>で入力項目グループにタイトルをつける-->
-              <a href="regist.php">Create New Account</a>
-              <input type="button"class="square_btn2" onclick="location.href='./regist.php'" value="Create New Account">
               <div class='form-group'>
                 <input class='form-control' id="username" placeholder='Email address' type='email' name="username" autocorrect="off" autocapitalize="off">
               </div>
