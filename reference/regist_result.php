@@ -61,8 +61,8 @@ require_once('../class.php');
                     }
                     //登録処理
                     try {
-                      $stmt = $pdo->prepare("insert into userdata(username, password, nickname, account_id) values(?, ?, ?, ?)");
-                      $stmt->execute([$username, $password, $nickname, $account_id]);
+                      $stmt = $pdo->prepare("insert into userdata(username, password) values(?, ?)");
+                      $stmt->execute([$username, $password]);
                       echo '登録完了!';
                       print <<<EOH
                       <br>
