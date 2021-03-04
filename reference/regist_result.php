@@ -38,7 +38,7 @@ require_once('../class.php');
             <div class='form-group'>
                 <?php 
                     //データベースへ接続
-                    $pdo = new Twitter;
+                    $pdo = new Database;
                     $pdo->getDBH();
 
                     //POSTのValidate

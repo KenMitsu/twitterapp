@@ -3,42 +3,6 @@ require_once('../config.php');
 require_once('../class.php');
 session_start();
 ini_set('display_errors', 0);
-
-    //DB内でPOSTされたメールアドレスを検索
-        $pdo = new Database();
-        $dbh = $pdo->getDBH();
-        $stmt = $dbh->prepare('select * from userdata where username = ?');
-        $stmt->execute([$_POST['username']]);
-        $row = $stmt->fetch(PDO::FETCH_ASSOC);
-
-
-        
-        //emailがDB内に存在しているか確認
-        if (!isset($row['username'])) {
-          echo 'Incorrect Username';
-          print <<<EOH
-          <input type="button"class="square_btn2" onclick="location.href='./login.html'" value="Back to Login page">;
-        EOH;
-          return false;
-        }
-
-        //パスワード確認後sessionにメールアドレスを渡す
-        if (password_verify($_POST['password'], $row['password'])) {
-          session_regenerate_id(true); //session_idを新しく生成し、置き換える
-          $_SESSION['USERNAME'] = $row['username'];
-          echo "Welcome {$_SESSION['USERNAME']}!";
-          echo '<br>';
-          print <<<EOH
-          <input type="button"class="square_btn2" onclick="location.href='./hierapolis-gh-pages/dashboard.php'" value="Go to Menu">
-        EOH;
-
-        } else {
-          echo 'パスワードが間違っています。';
-          print <<<EOH
-          <input type="button"class="square_btn2" onclick="location.href='./login.html'" value="Back to Login Page">
-        EOH;
-          return false;
-        }
 ?>
 
 <!DOCTYPE html>
@@ -64,36 +28,56 @@ ini_set('display_errors', 0);
               <div class='logo-icon'>
                 <i class='icon-beer'></i>
               </div>
-              CINC Twitter システム 
+              CINC Twitter System
             </h1>
           </div>
         </div>
       </div>
       <div class='row'>
         <div class='col-lg-12'>
-          <form action="index_result.php" method="post">
-            <fieldset class='text-center'>  <!--FIELDSETはフォームの入力項目をグループ化する-->
-              <legend>Login to your account</legend>　<!--<LEGEND>～</LEGEND>で入力項目グループにタイトルをつける-->
-              <div class='form-group'>
-                <input class='form-control' id="username" placeholder='Email address' type='email' name="username" autocorrect="off" autocapitalize="off">
-              </div>
-              <div class='form-group'>
-                <input class='form-control' id="password" placeholder='password' type='password' name="password" autocorrect="off" autocapitalize="off">
-              </div>
-              <div class='text-center'>
-                <div class='checkbox'>
-                  <label>
-                    <input type='checkbox'>
-                    Remember me on this computer
-                  </label>
-                </div>
-                <button type="submit"class="btn btn-default">Sign In</button>
+          <fieldset class='text-center'>  <!--FIELDSETはフォームの入力項目をグループ化する-->
+            <legend>Account Registration</legend>　<!--<LEGEND>～</LEGEND>で入力項目グループにタイトルをつける-->
+            <div class='form-group'>
+                <?php 
+                    //DB内でPOSTされたメールアドレスを検索
+                    $pdo = new Database();
+                    $dbh = $pdo->getDBH();
+                    $stmt = $dbh->prepare('select * from userdata where username = ?');
+                    $stmt->execute([$_POST['username']]);
+                    $row = $stmt->fetch(PDO::FETCH_ASSOC);
 
-                <br>
-                <a href="forgot_password.html">Forgot password?</a>
-              </div>
-            </fieldset>
-          </form>
+                    //emailがDB内に存在しているか確認
+                    if (!isset($row['username'])) {
+                      echo 'Incorrect Username';
+                      print <<<EOH
+                      <br>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">Back to Login page</button>
+                    EOH;
+                      return false;
+                    }
+
+                    //パスワード確認後sessionにメールアドレスを渡す
+                    if (password_verify($_POST['password'], $row['password'])) {
+                      session_regenerate_id(true); //session_idを新しく生成し、置き換える
+                      $_SESSION['USERNAME'] = $row['username'];
+                      echo "Welcome {$_SESSION['USERNAME']}!";
+                      echo '<br>';
+                      print <<<EOH
+                      <br>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./dashboard.php'">Go to the Ranking</button>
+                    EOH;
+
+                    } else {
+                      echo 'パスワードが間違っています。';
+                      print <<<EOH
+                      <br>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">Back to Login Page</button>
+                    EOH;
+                      return false;
+                    }    
+                ?>
+            </div>
+          </fieldset>
         </div>
       </div>
     </div>
@@ -104,7 +88,6 @@ ini_set('display_errors', 0);
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js" type="text/javascript"></script>
     <script src="assets/javascripts/application-985b892b.js" type="text/javascript"></script>
-
 
     <!-- Google Analytics -->
     <script>
