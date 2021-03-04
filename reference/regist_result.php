@@ -1,6 +1,6 @@
 <?php
-require_once('../config.php');
-reqire_once('../class.php');
+//require_once('../config.php');
+//reqire_once('../class.php');
 ?>
 
 <!DOCTYPE html>
