@@ -52,7 +52,7 @@
                 </div>
                 <div>
                   <label>
-                    <p>＠の後ろの文字列。登録でランキングに参戦可能。※任意</p>
+                    <p>twitter accountとは：＠の後ろの文字列。登録でランキングに参戦可能。※登録は任意</p>
                   </label>
                 </div>
                 <button type="submit"class="btn btn-default">Sign Up</button>
