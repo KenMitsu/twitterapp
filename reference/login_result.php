@@ -51,6 +51,7 @@ ini_set('display_errors', 0);
                       echo 'Incorrect Username';
                       print <<<EOH
                       <br>
+                      <br>
                       <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">Back to Login page</button>
                     EOH;
                       return false;
