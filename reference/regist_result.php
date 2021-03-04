@@ -39,8 +39,15 @@ reqire_once('../class.php');
               <div class='form-group'>
                   <?php
                       //データベースへ接続
-                      $pdo = new Twitter;
-                      $pdo->getDBH();
+                      //$pdo = new Twitter;
+                      //$pdo->getDBH();
+                      try {
+                        $pdo = new PDO(DSN, USER, PASS);
+                        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+                      
+                      } catch (Exception $e) {
+                        echo $e->getMessage() . "<br/>". "<br/>";
+                      }
 
                       //POSTのValidate
                       $username = $_POST['username'];
