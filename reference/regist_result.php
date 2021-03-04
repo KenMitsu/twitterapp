@@ -36,6 +36,7 @@ require_once('../class.php');
           <fieldset class='text-center'>  <!--FIELDSETはフォームの入力項目をグループ化する-->
             <legend>Account Registration</legend>　<!--<LEGEND>～</LEGEND>で入力項目グループにタイトルをつける-->
             <div class='form-group'>
+
                 <?php 
                     //データベースへ接続
                     $dbh = new Database;
@@ -72,6 +73,7 @@ require_once('../class.php');
                     EOH;
                     } catch (\Exception $e) {
                       echo 'このEmail addressはすでに使われています'. "<br/>";
+                      echo $account_id, $nickname;
                       print <<<EOH
                       <br>
                       <br>
@@ -79,6 +81,7 @@ require_once('../class.php');
                     EOH;
                     } 
                     ?>
+
             </div>
           </fieldset>
         </div>
