@@ -104,13 +104,6 @@ ini_set('display_errors', 0);
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js" type="text/javascript"></script>
     <script src="assets/javascripts/application-985b892b.js" type="text/javascript"></script>
-    <script>
-      window.addEventListener("beforeunload", function(e) {
-      var confirmationMessage = "入力内容を破棄します。";
-      e.returnValue = confirmationMessage;
-      return confirmationMessage;
-    });
-    </script>
 
     <!-- Google Analytics -->
     <script>
