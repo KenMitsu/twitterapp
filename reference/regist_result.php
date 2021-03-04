@@ -60,13 +60,13 @@ require_once('../class.php');
                     }
 
                     //nicknameがあるかどうか
-                    if(is_null($nickname)){
+                    /*if(is_null($nickname)){
                       echo 'ニックネームを入力してください'
                       print <<<EOH
                       <br><br>
                       <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">登録画面に戻る</button>
                     EOH;
-                    }
+                    }*/
 
                     //登録処理
                     try {
