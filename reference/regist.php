@@ -38,6 +38,11 @@
                 <input class='form-control' id="password" placeholder='password' type='password' name="password" autocorrect="off" autocapitalize="off">
               </div>
               <div class='text-center'>
+                <div>
+                  <label>
+                    <p>Set the password using at least 8 characters including 1 or more half-width alphanumeric characters.</p>
+                  </label>
+                </div>
                 <button type="submit"class="btn btn-default">Sign Up</button>
               </div>
             </fieldset>

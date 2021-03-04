@@ -64,8 +64,7 @@ ini_set('display_errors', 0);
               <div class='logo-icon'>
                 <i class='icon-beer'></i>
               </div>
-              <p>CINC Twitter</p>
-              <p>システム</p> 
+              CINC Twitter システム 
             </h1>
           </div>
         </div>
@@ -105,6 +104,7 @@ ini_set('display_errors', 0);
     <script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"></script>
     <script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js" type="text/javascript"></script>
     <script src="assets/javascripts/application-985b892b.js" type="text/javascript"></script>
+
 
     <!-- Google Analytics -->
     <script>
