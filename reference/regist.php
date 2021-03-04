@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html class='no-js' lang='en'>
+<html class='no-js' lang='ja'>
   <head>
     <meta charset='utf-8'>
     <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
@@ -31,6 +31,7 @@
           <form action="regist_result.php" method="post">
             <fieldset class='text-center'>  <!--FIELDSETはフォームの入力項目をグループ化する-->
               <legend>Account Registration</legend>　<!--<LEGEND>～</LEGEND>で入力項目グループにタイトルをつける-->
+              <p>アカウント登録</p>
               <div class='form-group'>
                 <input class='form-control' id="username" placeholder='Email address' type='email' name="username" autocorrect="off" autocapitalize="off">
               </div>
@@ -40,14 +41,19 @@
               <div class='text-center'>
                 <div>
                   <label>
-                    <p>Set the password using at least 8 characters including 1 or more half-width alphanumeric characters.</p>
+                    <p>パスワードは半角英数字をそれぞれ1文字以上を含む、合計8文字以上で設定してください。</p>
                   </label>
                 </div>
                 <div class='form-group'>
                   <input class='form-control' id="nickname" placeholder='nickname' type='text' name="nickname" autocorrect="off" autocapitalize="off">
                 </div>
                 <div class='form-group'>
-                  <input class='form-control' id="account_id" placeholder='account_id' type='text' name="account_id" autocorrect="off" autocapitalize="off">
+                  <input class='form-control' id="account_id" placeholder='twitter_account_id' type='text' name="account_id" autocorrect="off" autocapitalize="off">
+                </div>
+                <div>
+                  <label>
+                    <p>＠の後ろの文字列です。※Twitterアカウント登録は任意です。</p>
+                  </label>
                 </div>
                 <button type="submit"class="btn btn-default">Sign Up</button>
               </div>
