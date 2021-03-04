@@ -50,6 +50,7 @@ require_once('../class.php');
                       echo 'Set the password using at least 8 characters including 1 or more half-width alphanumeric characters.';
                       print <<<EOH
                       <br>
+                      <br>
                       <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">Sign Up</button>
                     EOH;
                       return false;
@@ -63,11 +64,13 @@ require_once('../class.php');
                       <br>
                       Press the button below to log in.
                       <br>
+                      <br>
                       <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">Go to Login Page</button>
                     EOH;
                     } catch (\Exception $e) {
                       echo 'The username is already in use.'. "<br/>";
                       print <<<EOH
+                      <br>
                       <br>
                       <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">Back to Account Registration Page</button>
                     EOH;
