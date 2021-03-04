@@ -66,13 +66,14 @@ require_once('../class.php');
                       <br><br>
                       <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">登録画面に戻る</button>
                     EOH;
-                    }*/
+                    }*/s
 
                     //登録処理
                     try {
                       $stmt = $pdo->prepare("insert into userdata(username, password, nickname, account_id) values(?, ?, ?, ?)");
                       $stmt->execute([$username, $password, $nickname, $account_id]);
                       echo '登録完了!';
+                      echo is_null($nickname);
                       print <<<EOH
                       <br>
                       下のボタンをクリックしてください。
