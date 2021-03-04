@@ -58,9 +58,9 @@ require_once('../class.php');
                     EOH;
                       return false;
                     }
-                    
+
                     //nicknameがあるかどうか
-                    if(!$nickname){
+                    if(is_null($nickname)){
                       echo 'ニックネームを入力してください'
                       print <<<EOH
                       <br><br>
