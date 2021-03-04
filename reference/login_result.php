@@ -65,12 +65,14 @@ ini_set('display_errors', 0);
                       echo '<br>';
                       print <<<EOH
                       <br>
+                      <br>
                       <button type="submit"class="btn btn-default" onclick="location.href='./dashboard.php'">Go to the Ranking</button>
                     EOH;
 
                     } else {
                       echo 'パスワードが間違っています。';
                       print <<<EOH
+                      <br>
                       <br>
                       <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">Back to Login Page</button>
                     EOH;
