@@ -1,0 +1,100 @@
+/*タイトル*/
+h1{
+color: #505050;/*文字色*/
+font-size: xx-large;
+padding: 0.5em;/*文字周りの余白*/
+display: inline-block;/*おまじない*/
+line-height: 1.3;/*行高*/
+background: #dbebf8;/*背景色*/
+vertical-align: middle;/*上下中央*/
+border-radius: 25px 0px 0px 25px;/*左側の角を丸く*/
+}
+h1:before {
+content: '●';
+color: white;
+margin-right: 8px;
+}
+
+/*基本ボタン*/
+.square_btn {
+    display: inline-block;
+    HEIGHT:50px;
+    padding: 0.3em 1em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: solid 2px #67c5ff;
+    border-radius: 3px;
+    transition: .4s;
+}
+.square_btn:hover {
+    background: #67c5ff;
+    color: white;
+}
+.push_btn{
+  display: inline-block;
+  padding: 0.3em 1em;
+  text-decoration: none;
+  background: #67c5ff;
+  color: white;
+  border: solid 2px #67c5ff;
+}
+
+/*メニュー戻るボタン*/
+.square_btn2{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    color: #67c5ff;
+    border: dashed 1px #67c5ff;
+    border-radius: 3px;
+    transition: .4s;
+
+}
+.square_btn2:hover {
+    border-style: dotted;
+    color: #679efd;
+}
+
+/*日本語、英語、ページタイトル*/
+h2 {
+padding: 0.4em 0.5em;/*文字の上下 左右の余白*/
+color: #494949;/*文字色*/
+background: #f4f4f4;/*背景色*/
+border-left: solid 5px #7db4e6;/*左線*/
+border-bottom: solid 3px #d7d7d7;/*下線*/
+}
+
+/*
+.sq_btn{
+    display: inline-block;
+    padding: 0.5em 1em;
+    text-decoration: none;
+    background: #668ad8;
+    color: #FFF;
+    border-bottom: solid 4px #627295;
+    border-radius: 3px;
+}
+.sq_btn:active {
+    -ms-transform: translateY(4px);
+    -webkit-transform: translateY(4px);
+    transform: translateY(4px);
+    border-bottom: none;
+}
+*/
+/*edit_table用*/
+body {
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+}
+table.memberTable {
+	border-collapse: collapse;
+}
+table.memberTable th,
+table.memberTable td {
+    padding: 0;
+    border: solid 1px #000;
+}
+input.memberList {
+	/**padding: 0px 0px 0px 0px; */
+	/**margin: 0px 0px 0px 0px; */
+	font-family:'ヒラギノ角ゴ Pro W3','Hiragino Kaku Gothic Pro','メイリオ',Meiryo,'ＭＳ Ｐゴシック',sans-serif;
+}
