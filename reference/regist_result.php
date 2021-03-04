@@ -26,64 +26,55 @@ require_once('../class.php');
               <div class='logo-icon'>
                 <i class='icon-beer'></i>
               </div>
-              CINC Twitter システム 
+              CINC Twitter System
             </h1>
           </div>
         </div>
       </div>
       <div class='row'>
         <div class='col-lg-12'>
-          <form action="regist_result.php" method="post">
-            <fieldset class='text-center'>  <!--FIELDSETはフォームの入力項目をグループ化する-->
-              <legend>Account Registration</legend>　<!--<LEGEND>～</LEGEND>で入力項目グループにタイトルをつける-->
-              <div class='form-group'>
-                  <?php 
-                      //データベースへ接続
-                      //$pdo = new Twitter;
-                      //$pdo->getDBH();
-                      try {
-                        $pdo = new PDO(DSN, USER, PASS);
-                        $pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-                      
-                      } catch (Exception $e) {
-                        echo $e->getMessage() . "<br/>". "<br/>";
-                      }
+          <fieldset class='text-center'>  <!--FIELDSETはフォームの入力項目をグループ化する-->
+            <legend>Account Registration</legend>　<!--<LEGEND>～</LEGEND>で入力項目グループにタイトルをつける-->
+            <div class='form-group'>
+                <?php 
+                    //データベースへ接続
+                    $pdo = new Twitter;
+                    $pdo->getDBH();
 
-                      //POSTのValidate
-                      $username = $_POST['username'];
-
-                      //パスワードの正規表現
-                      if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i', $_POST['password'])) {
-                        $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
-                      } else {
-                        echo 'Set the password using at least 8 characters including 1 or more half-width alphanumeric characters.';
-                        print <<<EOH
-                        <br>
-                        <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">Sign Up</button>
-                      EOH;
-                        return false;
-                      }
-                      //登録処理
-                      try {
-                        $stmt = $pdo->prepare("insert into userdata(username, password) values(?, ?)");
-                        $stmt->execute([$username, $password]);
-                        echo 'Registered correctly!';
-                        print <<<EOH
-                        <br>
-                        Press the button below to log in.
-                        <button type="submit"class="btn btn-default" onclick="location.href='./index.html'">Go to Login Page</button>
-                      EOH;
-                      } catch (\Exception $e) {
-                        echo 'The username is already in use.'. "<br/>";
-                        print <<<EOH
-                        <br>
-                        <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">Back to Account Registration Page</button>
-                      EOH;
-                      } 
-                      ?>
-              </div>
-            </fieldset>
-          </form>
+                    //POSTのValidate
+                    $username = $_POST['username'];
+                    //パスワードの正規表現
+                    if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i', $_POST['password'])) {
+                      $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
+                    } else {
+                      echo 'Set the password using at least 8 characters including 1 or more half-width alphanumeric characters.';
+                      print <<<EOH
+                      <br>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">Sign Up</button>
+                    EOH;
+                      return false;
+                    }
+                    //登録処理
+                    try {
+                      $stmt = $pdo->prepare("insert into userdata(username, password) values(?, ?)");
+                      $stmt->execute([$username, $password]);
+                      echo 'Registered correctly!';
+                      print <<<EOH
+                      <br>
+                      Press the button below to log in.
+                      <br>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./index.html'">Go to Login Page</button>
+                    EOH;
+                    } catch (\Exception $e) {
+                      echo 'The username is already in use.'. "<br/>";
+                      print <<<EOH
+                      <br>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">Back to Account Registration Page</button>
+                    EOH;
+                    } 
+                    ?>
+            </div>
+          </fieldset>
         </div>
       </div>
     </div>

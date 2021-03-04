@@ -21,7 +21,7 @@
               <div class='logo-icon'>
                 <i class='icon-beer'></i>
               </div>
-              CINC Twitter システム 
+              CINC Twitter System
             </h1>
           </div>
         </div>
