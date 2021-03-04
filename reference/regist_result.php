@@ -38,8 +38,8 @@ require_once('../class.php');
             <div class='form-group'>
                 <?php 
                     //データベースへ接続
-                    $pdo = new Database;
-                    $pdo->getDBH();
+                    $dbh = new Database;
+                    $pdo = $dbh->getDBH();
 
                     //POSTのValidate
                     $username = $_POST['username'];
