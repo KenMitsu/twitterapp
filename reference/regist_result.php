@@ -1,6 +1,6 @@
 <?php
-//require_once('../config.php');
-//reqire_once('../class.php');
+require_once('../config.php');
+require_once('../class.php');
 ?>
 
 <!DOCTYPE html>
@@ -37,7 +37,7 @@
             <fieldset class='text-center'>  <!--FIELDSETはフォームの入力項目をグループ化する-->
               <legend>Account Registration</legend>　<!--<LEGEND>～</LEGEND>で入力項目グループにタイトルをつける-->
               <div class='form-group'>
-                  <?php /*
+                  <?php 
                       //データベースへ接続
                       //$pdo = new Twitter;
                       //$pdo->getDBH();
@@ -79,7 +79,7 @@
                         <br>
                         <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">Back to Account Registration Page</button>
                       EOH;
-                      } */
+                      } 
                       ?>
               </div>
             </fieldset>
