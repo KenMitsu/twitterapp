@@ -70,7 +70,7 @@ session_start();
             </li>
             <li class='divider'></li>
             <li>
-              <a href="../logout.php">Sign out</a>
+              <a href="../logout.html">Sign out</a>
             </li>
           </ul>
         </li>
