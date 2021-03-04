@@ -64,7 +64,8 @@ ini_set('display_errors', 0);
               <div class='logo-icon'>
                 <i class='icon-beer'></i>
               </div>
-              CINC Twitter システム 
+              <p>CINC Twitter</p>
+              <p>システム</p> 
             </h1>
           </div>
         </div>
