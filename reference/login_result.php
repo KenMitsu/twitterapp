@@ -70,7 +70,7 @@ ini_set('display_errors', 0);
                     EOH;
 
                     } else {
-                      echo 'パスワードが間違っています。';
+                      echo 'Incorrect password';
                       print <<<EOH
                       <br>
                       <br>
