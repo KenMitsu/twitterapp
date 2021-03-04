@@ -53,12 +53,22 @@ require_once('../class.php');
                     } else {
                       echo 'パスワードは半角英数字をそれぞれ1文字以上を含む、合計8文字以上で設定してください。';
                       print <<<EOH
-                      <br>
-                      <br>
+                      <br><br>
                       <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">登録画面に戻る</button>
                     EOH;
                       return false;
                     }
+                    
+                    //nicknameがあるかどうか
+                    if(!$nickname){
+                      echo 'ニックネームを入力してください'
+                      print <<<EOH
+                      <br><br>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">登録画面に戻る</button>
+                    EOH;
+                      return false;
+                    }
+
                     //登録処理
                     try {
                       $stmt = $pdo->prepare("insert into userdata(username, password, nickname, account_id) values(?, ?, ?, ?)");
