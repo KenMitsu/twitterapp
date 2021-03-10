@@ -40,7 +40,7 @@ class Tweet
                 die($e->getMessage());
               }
         }
-    public function favorite()
+    public function favorite_best3()
         {
             try{
                 $sql="SELECT name, contents, favorite_count FROM tweet_info ORDER BY favorite_count desc limit 3";
@@ -51,7 +51,18 @@ class Tweet
                 die($e->getMessage());
             }
         }
-    public function rt()
+    public function tweetlist_all()
+        {
+            try{
+                $sql="SELECT name, contents, favorite_count FROM tweet_info ORDER BY favorite_count";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function rt_best3()
         {
             try{
                 $sql="SELECT name, contents, retweet_count FROM tweet_info ORDER BY retweet_count desc limit 3";
@@ -62,7 +73,7 @@ class Tweet
                 die($e->getMessage());
             }
         }
-    public function fler()
+    public function followers_best3()
         {
             try{
                 $sql="SELECT name, followers_count, following_count, posts_count FROM user_info ORDER BY followers_count desc limit 3";

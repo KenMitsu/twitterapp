@@ -5,7 +5,7 @@ session_start();
 
 //DB内でPOSTされたメールアドレスを検索
     $tweet = new Tweet();
-    $stmt_favorite = $tweet->favorite();
+    $stmt_tweetlist_all = $tweet->tweetlist_all();
 ?>
 
 
@@ -189,7 +189,7 @@ session_start();
 
               <table border="5" width="70%">
                 <tr><th>No</th><th>名前</th><th>ツイート</th><th>いいね数</th></tr>
-                <?php $i=1; while($rows = $stmt_favorite->fetch(PDO::FETCH_ASSOC)){?>
+                <?php $i=1; while($rows = $stmt_tweetlist_all->fetch(PDO::FETCH_ASSOC)){?>
                     <tr>
                         <td width="5%"><?= $i; $i++;?></td>
                         <td width="20%"><?=htmlspecialchars($rows['name'])?></td>
