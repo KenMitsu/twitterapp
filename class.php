@@ -54,7 +54,7 @@ class Tweet
     public function tweetlist_all()
         {
             try{
-                $sql="SELECT name, contents, favorite_count FROM tweet_info ORDER BY favorite_count";
+                $sql="SELECT name, contents, favorite_count FROM tweet_info ORDER BY favorite_count desc";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
