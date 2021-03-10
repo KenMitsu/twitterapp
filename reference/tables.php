@@ -212,10 +212,10 @@ session_start();
             <?php $i=1; while($rows = $stmt_favorite->fetch(PDO::FETCH_ASSOC)){?>
               <tr class='success'>
                 <td width="5%"><?= $i; $i++;?></td>
-                <td width="20%"><?=htmlspecialchars($rows['name'])?></td>
+                <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
                 <td width="65%"><?=htmlspecialchars($rows['contents'])?></td>
-                <td width="10%"><?=htmlspecialchars($rows['favorite_count'])?></td>
-                <td class='action'>
+                <td width="5%"><?=htmlspecialchars($rows['favorite_count'])?></td>
+                <td width="10%" class='action'>
                   <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
                     <i class='icon-zoom-in'></i>
                   </a>
