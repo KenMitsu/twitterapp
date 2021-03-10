@@ -198,21 +198,23 @@ session_start();
           <table class='table'>
             <thead>
               <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th>No</th>
+                <th>Name</th>
+                <th>Tweet</th>
+                <th>いいね数</th>
                 <th class='actions'>
                   Actions
                 </th>
               </tr>
             </thead>
             <tbody>
+
+            <?php $i=1; while($rows = $stmt_favorite->fetch(PDO::FETCH_ASSOC)){?>
               <tr class='success'>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
+                <td><?= $i; $i++;?></td>
+                <td><?=htmlspecialchars($rows['name'])?></td>
+                <td><?=htmlspecialchars($rows['contents'])?></td>
+                <td><?=htmlspecialchars($rows['favorite_count'])?></td>
                 <td class='action'>
                   <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
                     <i class='icon-zoom-in'></i>
@@ -225,142 +227,9 @@ session_start();
                   </a>
                 </td>
               </tr>
-              <tr class='danger'>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                  <a class='btn btn-info' href='#'>
-                    <i class='icon-edit'></i>
-                  </a>
-                  <a class='btn btn-danger' href='#'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr class='warning'>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                  <a class='btn btn-info' href='#'>
-                    <i class='icon-edit'></i>
-                  </a>
-                  <a class='btn btn-danger' href='#'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr class='active'>
-                <td>4</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                  <a class='btn btn-info' href='#'>
-                    <i class='icon-edit'></i>
-                  </a>
-                  <a class='btn btn-danger' href='#'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr class='disabled'>
-                <td>5</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                  <a class='btn btn-info' href='#'>
-                    <i class='icon-edit'></i>
-                  </a>
-                  <a class='btn btn-danger' href='#'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>6</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                  <a class='btn btn-info' href='#'>
-                    <i class='icon-edit'></i>
-                  </a>
-                  <a class='btn btn-danger' href='#'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>7</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                  <a class='btn btn-info' href='#'>
-                    <i class='icon-edit'></i>
-                  </a>
-                  <a class='btn btn-danger' href='#'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>8</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                  <a class='btn btn-info' href='#'>
-                    <i class='icon-edit'></i>
-                  </a>
-                  <a class='btn btn-danger' href='#'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-              <tr>
-                <td>9</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                  <a class='btn btn-info' href='#'>
-                    <i class='icon-edit'></i>
-                  </a>
-                  <a class='btn btn-danger' href='#'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
+            <?php }  ?>
+          
+          
               <tr>
                 <td>10</td>
                 <td>Jacob</td>
@@ -378,6 +247,7 @@ session_start();
                   </a>
                 </td>
               </tr>
+
             </tbody>
           </table>
           <div class='panel-footer'>
@@ -530,6 +400,8 @@ session_start();
         </div>
       </div>
     </div>
+
+
     <!-- Footer -->
     <!-- Javascripts -->
     <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.1/jquery.min.js" type="text/javascript"></script><script src="//ajax.googleapis.com/ajax/libs/jqueryui/1.10.3/jquery-ui.min.js" type="text/javascript"></script><script src="//cdnjs.cloudflare.com/ajax/libs/modernizr/2.6.2/modernizr.min.js" type="text/javascript"></script><script src="assets/javascripts/application-985b892b.js" type="text/javascript"></script>
