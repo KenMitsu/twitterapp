@@ -211,10 +211,10 @@ session_start();
 
             <?php $i=1; while($rows = $stmt_favorite->fetch(PDO::FETCH_ASSOC)){?>
               <tr class='success'>
-                <td><?= $i; $i++;?></td>
-                <td><?=htmlspecialchars($rows['name'])?></td>
-                <td><?=htmlspecialchars($rows['contents'])?></td>
-                <td><?=htmlspecialchars($rows['favorite_count'])?></td>
+                <td width="5%"><?= $i; $i++;?></td>
+                <td width="20%"><?=htmlspecialchars($rows['name'])?></td>
+                <td width="65%"><?=htmlspecialchars($rows['contents'])?></td>
+                <td width="10%"><?=htmlspecialchars($rows['favorite_count'])?></td>
                 <td class='action'>
                   <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
                     <i class='icon-zoom-in'></i>
@@ -229,24 +229,6 @@ session_start();
               </tr>
             <?php }  ?>
           
-          
-              <tr>
-                <td>10</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-                <td class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                  <a class='btn btn-info' href='#'>
-                    <i class='icon-edit'></i>
-                  </a>
-                  <a class='btn btn-danger' href='#'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
 
             </tbody>
           </table>
