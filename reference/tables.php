@@ -166,7 +166,7 @@ session_start();
             本日のいいね数ランキング Best3
           </div>
           <div class='panel-body'>
-            <table class='table'>
+            <table class='table table-bordered'>
               <thead>
                 <tr>
                   <th>No</th>
@@ -223,7 +223,7 @@ session_start();
             <i class='icon-table icon-large'></i>
             フォロワー数ランキング　Best3
           </div>
-          <table class='table table-condensed'>
+          <table class='table table-bordered'>
             <thead>
               <tr>
                 <th>No</th>
