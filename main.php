@@ -9,13 +9,14 @@ print_r('Hello');
 $myExec = new Tweet;
 
 $myExec->getTweet('_tobechang_');
+/*
 $myExec->getTweet('seiya_TA05');
 $myExec->getTweet('iwaomorning');
 $myExec->getTweet('grisoluto');
 $myExec->getTweet('koichiwatai');
 $myExec->getTweet('cinc_analytics');
 $myExec->getTweet('yamaji_ryota');
-
+*/
 //$myExec->test();
 /*
 getTweet('_tobechang_');
