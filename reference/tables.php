@@ -212,7 +212,7 @@ session_start();
             </thead>
             <tbody>
               <?php $i=1; while($rows = $stmt_tweetlist_all->fetch(PDO::FETCH_ASSOC)){?>
-                <tr class='success'>
+                <tr class='table'>
                   <td width="5%"><?= $i; $i++;?></td>
                   <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
                   <td width="65%"><?=htmlspecialchars($rows['contents'])?></td>
@@ -293,7 +293,6 @@ session_start();
                   <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
                   <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
                   <td width="10%"><?=htmlspecialchars($rows['favorite_count'])?></td>
-                  </td>
                 </tr>
               <?php }  ?>
             </tbody>
@@ -303,41 +302,32 @@ session_start();
         <div class='panel panel-default grid'>
           <div class='panel-heading'>
             <i class='icon-table icon-large'></i>
-            Bordered Table
+            RT数ランキング　Best3
           </div>
           <div class='panel-body'>
             <table class='table table-bordered'>
               <thead>
                 <tr>
-                  <th>#</th>
-                  <th>First Name</th>
-                  <th>Last Name</th>
-                  <th>Username</th>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Tweet</th>
+                  <th>RT数</th>
                 </tr>
               </thead>
               <tbody>
-                <tr>
-                  <td>1</td>
-                  <td>Mark</td>
-                  <td>Otto</td>
-                  <td>@mdo</td>
-                </tr>
-                <tr>
-                  <td>2</td>
-                  <td>Jacob</td>
-                  <td>Thornton</td>
-                  <td>@fat</td>
-                </tr>
-                <tr>
-                  <td>3</td>
-                  <td>Larry</td>
-                  <td>the Bird</td>
-                  <td>@twitter</td>
-                </tr>
+                <?php $i=1; while($rows = $stmt_rt_best3->fetch(PDO::FETCH_ASSOC)){?>
+                  <tr class='table'>
+                    <td width="5%"><?= $i; $i++;?></td>
+                    <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
+                    <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
+                    <td width="10%"><?=htmlspecialchars($rows['retweet_count'])?></td>
+                  </tr>
+                <?php }  ?>
               </tbody>
             </table>
           </div>
         </div>
+        
         <div class='panel panel-default grid'>
           <div class='panel-heading'>
             <i class='icon-table icon-large'></i>
