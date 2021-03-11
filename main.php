@@ -4,7 +4,7 @@ require_once(__DIR__ . '/class.php');
 require_once(__DIR__ . '/config.php');
 require_once(__DIR__ . '/redaction.php');
 
-print_r('Hello');
+print_r('Hello'."<br/>");
 
 $myExec = new Tweet;
 
