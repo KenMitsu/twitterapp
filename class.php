@@ -101,7 +101,6 @@ class Tweet
                 die($e->getMessage()."<br/>");
             }
             print_r('Twitter取得前です')."<br/>";
-            use Abraham\TwitterOAuth\TwitterOAuth;
             $connection = new TwitterOAuth(
                 CONSUMER_KEY, 
                 CONSUMER_SECRET, 
