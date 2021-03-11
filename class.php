@@ -87,7 +87,7 @@ class Tweet
 
     public function getTweet($screenname)
         {
-                
+            print_r('getTweetにきてはいるよ');    
             date_default_timezone_set('Asia/Tokyo');
 
             try{
@@ -107,7 +107,7 @@ class Tweet
                 ACCESS_TOKEN, 
                 ACCESS_TOKEN_SECRET
             );
-
+            print_r('Twitter取得にきてはいるよ');
             $statuses = $connection->get('statuses/user_timeline',
                 array(
                     // ユーザー名（@は不要）
@@ -127,7 +127,7 @@ class Tweet
                 echo 'Error occurred.'.PHP_EOL;
                 echo 'Error message:'.$statuses->errors[0]->message.PHP_EOL;
             }else{
-        
+                print_r('foreeach手前っす');
                 foreach($statuses as $tweet){
                     $name = $tweet->user->name;
                     $followers_count = $tweet->user->followers_count;
