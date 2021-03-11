@@ -163,46 +163,6 @@ session_start();
         <div class='panel panel-default grid'>
           <div class='panel-heading'>
             <i class='icon-table icon-large'></i>
-            Default Table
-            <div class='panel-tools'>
-              <div class='btn-group'>
-                <a class='btn' href='#'>
-                  <i class='icon-wrench'></i>
-                  Settings
-                </a>
-                <a class='btn' href='#'>
-                  <i class='icon-filter'></i>
-                  Filters
-                </a>
-                <a class='btn' data-toggle='toolbar-tooltip' href='#' title='Reload'>
-                  <i class='icon-refresh'></i>
-                </a>
-              </div>
-              <div class='badge'>3 record</div>
-            </div>
-          </div>
-          <div class='panel-body filters'>
-            <div class='row'>
-              <div class='col-md-9'>
-                Add your custom filters here...
-              </div>
-              <div class='col-md-3'>
-                <div class='input-group'>
-                  <input class='form-control' placeholder='Quick search...' type='text'>
-                  <span class='input-group-btn'>
-                    <button class='btn' type='button'>
-                      <i class='icon-search'></i>
-                    </button>
-                  </span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <div class='panel panel-default grid'>
-          <div class='panel-heading'>
-            <i class='icon-table icon-large'></i>
             本日のいいね数ランキング Best3
           </div>
           <table class='table'>
@@ -285,7 +245,45 @@ session_start();
           </table>
         </div>
 
-        <table class='table'>
+        <div class='panel panel-default grid'>
+          <div class='panel-heading'>
+            <i class='icon-table icon-large'></i>
+            Default Table
+            <div class='panel-tools'>
+              <div class='btn-group'>
+                <a class='btn' href='#'>
+                  <i class='icon-wrench'></i>
+                  Settings
+                </a>
+                <a class='btn' href='#'>
+                  <i class='icon-filter'></i>
+                  Filters
+                </a>
+                <a class='btn' data-toggle='toolbar-tooltip' href='#' title='Reload'>
+                  <i class='icon-refresh'></i>
+                </a>
+              </div>
+              <div class='badge'>3 record</div>
+            </div>
+          </div>
+          <div class='panel-body filters'>
+            <div class='row'>
+              <div class='col-md-9'>
+                Add your custom filters here...
+              </div>
+              <div class='col-md-3'>
+                <div class='input-group'>
+                  <input class='form-control' placeholder='Quick search...' type='text'>
+                  <span class='input-group-btn'>
+                    <button class='btn' type='button'>
+                      <i class='icon-search'></i>
+                    </button>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+          <table class='table'>
             <thead>
               <tr>
                 <th>No</th>
@@ -357,6 +355,7 @@ session_start();
               Showing 1 to 10 of 32 entries
             </div>
           </div>
+        </div>
       </div>
     </div>
 
