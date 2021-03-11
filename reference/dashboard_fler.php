@@ -5,7 +5,7 @@ session_start();
 
 //DB内でPOSTされたメールアドレスを検索
     $tweet = new Tweet();
-    $stmt_fler = $tweet->fler();
+    $stmt_followers_best3 = $tweet->followers_best3();
 ?>
 
 
@@ -28,7 +28,7 @@ session_start();
     <div class='navbar navbar-default' id='navbar'>
       <a class='navbar-brand' href='#'>
         <i class='icon-beer'></i>
-        CINC　Twitter　システム
+        CINC　Twitter　System
       </a>
       <ul class='nav navbar-nav pull-right'>
         <li class='dropdown'>
@@ -189,7 +189,7 @@ session_start();
 
               <table border="5" width="70%">
                 <tr><th>No</th><th>名前</th><th>フォロワー数</th><th>フォロー数</th><th>投稿数</th></tr>
-                <?php $i=1; while($rows = $stmt_fler->fetch(PDO::FETCH_ASSOC)){?>
+                <?php $i=1; while($rows = $stmt_followers_best3->fetch(PDO::FETCH_ASSOC)){?>
                     <tr>
                         <td width="5%"><?= $i; $i++;?></td>
                         <td width="35%"><?=htmlspecialchars($rows['name'])?></td>
