@@ -6,8 +6,6 @@ require_once(__DIR__ . '/redaction.php');
 
 $myExec = new Tweet;
 print_r('Hello');
-//$myExec->test();
-
 $myExec->getTweet('_tobechang_');
 $myExec->getTweet('seiya_TA05');
 $myExec->getTweet('iwaomorning');
@@ -16,7 +14,7 @@ $myExec->getTweet('koichiwatai');
 $myExec->getTweet('cinc_analytics');
 $myExec->getTweet('yamaji_ryota');
 
-
+//$myExec->test();
 /*
 getTweet('_tobechang_');
 getTweet('seiya_TA05');
