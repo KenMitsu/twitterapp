@@ -66,7 +66,7 @@ ini_set('display_errors', 0);
                       print <<<EOH
                       <br>
                       <br>
-                      <button type="submit"class="btn btn-default" onclick="location.href='./table.php'">メインページへ移動する</button>
+                      <button type="submit"class="btn btn-default" onclick="location.href='./tables.php'">メインページへ移動する</button>
                     EOH;
 
                     } else {
