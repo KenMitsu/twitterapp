@@ -97,7 +97,7 @@ session_start();
           </li>
           <li class='active launcher'>
             <i class='icon-table'></i>
-            <a href="tables.html">Tables</a>
+            <a href="tables.php">Tables</a>
           </li>
           <li class='launcher dropdown hover'>
             <i class='icon-flag'></i>
