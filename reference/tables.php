@@ -287,7 +287,7 @@ session_start();
               </tr>
             </thead>
             <tbody>
-              <?php $i=1; while($rows = $stmt_tweetlist_all->fetch(PDO::FETCH_ASSOC)){?>
+              <?php $i=1; while($rows = $stmt_favorite_best3->fetch(PDO::FETCH_ASSOC)){?>
                 <tr class='success'>
                   <td width="5%"><?= $i; $i++;?></td>
                   <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
