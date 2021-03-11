@@ -7,7 +7,7 @@ session_start();
     $tweet = new Tweet();
     $stmt_tweetlist_all = $tweet->tweetlist_all();
     $stmt_favorite_best3 = $tweet->favorite_best3();
-    $stmt_ft_best3 = $tweet->rt_best3();
+    $stmt_rt_best3 = $tweet->rt_best3();
     $stmt_followers_best3 = $tweet->followers_best3();
 ?>
 
@@ -322,7 +322,7 @@ session_start();
                     <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
                     <td width="10%"><?=htmlspecialchars($rows['retweet_count'])?></td>
                   </tr>
-                <?php }  ?>
+                <?php } ?>
               </tbody>
             </table>
           </div>
