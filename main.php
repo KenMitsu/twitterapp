@@ -4,8 +4,9 @@ require_once(__DIR__ . '/class.php');
 require_once(__DIR__ . '/config.php');
 require_once(__DIR__ . '/redaction.php');
 
-$myExec = new Tweet;
 print_r('Hello');
+
+$myExec = new Tweet;
 $myExec->getTweet('_tobechang_');
 $myExec->getTweet('seiya_TA05');
 $myExec->getTweet('iwaomorning');
