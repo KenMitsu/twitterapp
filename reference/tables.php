@@ -6,6 +6,9 @@ session_start();
 //DB内でPOSTされたメールアドレスを検索
     $tweet = new Tweet();
     $stmt_tweetlist_all = $tweet->tweetlist_all();
+    $stmt_favorite_best3 = $tweet->favorite_best3();
+    $stmt_ft_best3 = $tweet->ft_best3();
+    $stmt_followers_best3 = $tweet->followers_best3();
 ?>
 
 <!DOCTYPE html>
@@ -208,30 +211,28 @@ session_start();
               </tr>
             </thead>
             <tbody>
-
-            <?php $i=1; while($rows = $stmt_tweetlist_all->fetch(PDO::FETCH_ASSOC)){?>
-              <tr class='success'>
-                <td width="5%"><?= $i; $i++;?></td>
-                <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
-                <td width="65%"><?=htmlspecialchars($rows['contents'])?></td>
-                <td width="5%"><?=htmlspecialchars($rows['favorite_count'])?></td>
-                <td width="10%" class='action'>
-                  <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
-                    <i class='icon-zoom-in'></i>
-                  </a>
-                  <a class='btn btn-info' href='#'>
-                    <i class='icon-edit'></i>
-                  </a>
-                  <a class='btn btn-danger' href='#'>
-                    <i class='icon-trash'></i>
-                  </a>
-                </td>
-              </tr>
-            <?php }  ?>
-          
-
+              <?php $i=1; while($rows = $stmt_tweetlist_all->fetch(PDO::FETCH_ASSOC)){?>
+                <tr class='success'>
+                  <td width="5%"><?= $i; $i++;?></td>
+                  <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
+                  <td width="65%"><?=htmlspecialchars($rows['contents'])?></td>
+                  <td width="5%"><?=htmlspecialchars($rows['favorite_count'])?></td>
+                  <td width="10%" class='action'>
+                    <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
+                      <i class='icon-zoom-in'></i>
+                    </a>
+                    <a class='btn btn-info' href='#'>
+                      <i class='icon-edit'></i>
+                    </a>
+                    <a class='btn btn-danger' href='#'>
+                      <i class='icon-trash'></i>
+                    </a>
+                  </td>
+                </tr>
+              <?php }  ?>
             </tbody>
           </table>
+
           <div class='panel-footer'>
             <ul class='pagination pagination-sm'>
               <li>
@@ -270,42 +271,35 @@ session_start();
             </div>
           </div>
         </div>
+
         <div class='panel panel-default grid'>
           <div class='panel-heading'>
             <i class='icon-table icon-large'></i>
-            Padding Table
+            本日のいいね数ランキング Best3
           </div>
           <table class='table'>
             <thead>
               <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th>No</th>
+                <th>Name</th>
+                <th>Tweet</th>
+                <th>いいね数</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              <?php $i=1; while($rows = $stmt_tweetlist_all->fetch(PDO::FETCH_ASSOC)){?>
+                <tr class='table'>
+                  <td width="5%"><?= $i; $i++;?></td>
+                  <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
+                  <td width="75%"><?=htmlspecialchars($rows['contents'])?></td>
+                  <td width="5%"><?=htmlspecialchars($rows['favorite_count'])?></td>
+                  </td>
+                </tr>
+              <?php }  ?>
             </tbody>
           </table>
         </div>
+        
         <div class='panel panel-default grid'>
           <div class='panel-heading'>
             <i class='icon-table icon-large'></i>
