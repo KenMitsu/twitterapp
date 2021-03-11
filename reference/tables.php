@@ -288,11 +288,11 @@ session_start();
             </thead>
             <tbody>
               <?php $i=1; while($rows = $stmt_favorite_best3->fetch(PDO::FETCH_ASSOC)){?>
-                <tr class='success'>
+                <tr class='table'>
                   <td width="5%"><?= $i; $i++;?></td>
                   <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
-                  <td width="75%"><?=htmlspecialchars($rows['contents'])?></td>
-                  <td width="5%"><?=htmlspecialchars($rows['favorite_count'])?></td>
+                  <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
+                  <td width="10%"><?=htmlspecialchars($rows['favorite_count'])?></td>
                   </td>
                 </tr>
               <?php }  ?>
