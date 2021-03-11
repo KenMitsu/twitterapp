@@ -5,7 +5,7 @@ require_once(__DIR__ . '/config.php');
 require_once(__DIR__ . '/redaction.php');
 
 $myExec = new Tweet;
-
+print_r('Hello');
 //$myExec->test();
 /*
 $myExec->getTweet('_tobechang_');
