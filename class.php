@@ -87,7 +87,7 @@ class Tweet
 
     public function getTweet($screenname)
         {
-            print_r('getTweetにきてはいるよ')."<br/>";    
+            print_r('getTweetにきてはいるよ'."<br/>");    
             date_default_timezone_set('Asia/Tokyo');
 
             try{
@@ -100,14 +100,14 @@ class Tweet
             } catch(PDOException $e) {
                 die($e->getMessage()."<br/>");
             }
-            print_r('Twitter取得前です')."<br/>";
+            print_r('Twitter取得前です'."<br/>");
             $connection = new TwitterOAuth(
                 CONSUMER_KEY, 
                 CONSUMER_SECRET, 
                 ACCESS_TOKEN, 
                 ACCESS_TOKEN_SECRET
             );
-            print_r('Twitter取得にきてはいるよ')."<br/>";
+            print_r('Twitter取得はできているよ'."<br/>");
             $statuses = $connection->get('statuses/user_timeline',
                 array(
                     // ユーザー名（@は不要）
