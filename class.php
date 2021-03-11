@@ -40,10 +40,10 @@ class Tweet
                 die($e->getMessage());
               }
         }
-    public function favorite_best3()
+    public function tweetlist_all()
         {
             try{
-                $sql="SELECT name, contents, favorite_count FROM tweet_info ORDER BY favorite_count desc limit 3";
+                $sql="SELECT name, contents, favorite_count FROM tweet_info ORDER BY favorite_count desc";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
@@ -51,10 +51,10 @@ class Tweet
                 die($e->getMessage());
             }
         }
-    public function tweetlist_all()
+    public function favorite_best3()
         {
             try{
-                $sql="SELECT name, contents, favorite_count FROM tweet_info ORDER BY favorite_count desc";
+                $sql="SELECT name, contents, favorite_count FROM tweet_info ORDER BY favorite_count desc limit 3";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;

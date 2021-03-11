@@ -7,7 +7,7 @@ session_start();
     $tweet = new Tweet();
     $stmt_tweetlist_all = $tweet->tweetlist_all();
     $stmt_favorite_best3 = $tweet->favorite_best3();
-    $stmt_ft_best3 = $tweet->ft_best3();
+    $stmt_ft_best3 = $tweet->rt_best3();
     $stmt_followers_best3 = $tweet->followers_best3();
 ?>
 
@@ -288,7 +288,7 @@ session_start();
             </thead>
             <tbody>
               <?php $i=1; while($rows = $stmt_tweetlist_all->fetch(PDO::FETCH_ASSOC)){?>
-                <tr class='table'>
+                <tr class='success'>
                   <td width="5%"><?= $i; $i++;?></td>
                   <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
                   <td width="75%"><?=htmlspecialchars($rows['contents'])?></td>
@@ -299,7 +299,7 @@ session_start();
             </tbody>
           </table>
         </div>
-        
+
         <div class='panel panel-default grid'>
           <div class='panel-heading'>
             <i class='icon-table icon-large'></i>
