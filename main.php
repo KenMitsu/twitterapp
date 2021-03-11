@@ -33,5 +33,7 @@ redaction('tweet_info', 'contents');
 */
 //phpinfo();
 
+
 ?>
 <input type="button"class="square_btn2" onclick="location.href='./tweet_result.php'" value="メイン画面へ戻る">
+
