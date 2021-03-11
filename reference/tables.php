@@ -165,26 +165,28 @@ session_start();
             <i class='icon-table icon-large'></i>
             本日のいいね数ランキング Best3
           </div>
-          <table class='table'>
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Tweet</th>
-                <th>いいね数</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php $i=1; while($rows = $stmt_favorite_best3->fetch(PDO::FETCH_ASSOC)){?>
-                <tr class='table'>
-                  <td width="5%"><?= $i; $i++;?></td>
-                  <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
-                  <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
-                  <td width="10%"><?=htmlspecialchars($rows['favorite_count'])?></td>
+          <div class='panel-body'>
+            <table class='table'>
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>Tweet</th>
+                  <th>いいね数</th>
                 </tr>
-              <?php }  ?>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <?php $i=1; while($rows = $stmt_favorite_best3->fetch(PDO::FETCH_ASSOC)){?>
+                  <tr class='table'>
+                    <td width="5%"><?= $i; $i++;?></td>
+                    <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
+                    <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
+                    <td width="10%"><?=htmlspecialchars($rows['favorite_count'])?></td>
+                  </tr>
+                <?php }  ?>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <div class='panel panel-default grid'>
@@ -248,7 +250,7 @@ session_start();
         <div class='panel panel-default grid'>
           <div class='panel-heading'>
             <i class='icon-table icon-large'></i>
-            Default Table
+            本日のツイート一覧
             <div class='panel-tools'>
               <div class='btn-group'>
                 <a class='btn' href='#'>
