@@ -223,28 +223,30 @@ session_start();
             <i class='icon-table icon-large'></i>
             フォロワー数ランキング　Best3
           </div>
-          <table class='table table-bordered'>
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>フォロワー数</th>
-                <th>フォロー数</th>
-                <th>投稿数</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php $i=1; while($rows = $stmt_followers_best3->fetch(PDO::FETCH_ASSOC)){?>
-                <tr class='table'>
-                  <td width="5%"><?= $i; $i++;?></td>
-                  <td width="35%"><?=htmlspecialchars($rows['name'])?></td>
-                  <td width="20%"><?=htmlspecialchars($rows['followers_count'])?></td>
-                  <td width="20%"><?=htmlspecialchars($rows['following_count'])?></td>
-                  <td width="20%"><?=htmlspecialchars($rows['posts_count'])?></td>
+          <div class='panel-body'>
+            <table class='table table-bordered'>
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>フォロワー数</th>
+                  <th>フォロー数</th>
+                  <th>投稿数</th>
                 </tr>
-              <?php }  ?>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <?php $i=1; while($rows = $stmt_followers_best3->fetch(PDO::FETCH_ASSOC)){?>
+                  <tr class='table'>
+                    <td width="5%"><?= $i; $i++;?></td>
+                    <td width="35%"><?=htmlspecialchars($rows['name'])?></td>
+                    <td width="20%"><?=htmlspecialchars($rows['followers_count'])?></td>
+                    <td width="20%"><?=htmlspecialchars($rows['following_count'])?></td>
+                    <td width="20%"><?=htmlspecialchars($rows['posts_count'])?></td>
+                  </tr>
+                <?php }  ?>
+              </tbody>
+            </table>
+          </div>
         </div>
 
         <div class='panel panel-default grid'>
