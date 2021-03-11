@@ -302,7 +302,7 @@ session_start();
         <div class='panel panel-default grid'>
           <div class='panel-heading'>
             <i class='icon-table icon-large'></i>
-            RT数ランキング　Best3
+            本日のRT数ランキング　Best3
           </div>
           <div class='panel-body'>
             <table class='table table-bordered'>
@@ -318,7 +318,7 @@ session_start();
                 <?php $i=1; while($rows = $stmt_rt_best3->fetch(PDO::FETCH_ASSOC)){?>
                   <tr class='table'>
                     <td width="5%"><?= $i; $i++;?></td>
-                    <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
+                    <td width="15%"><?=htmlspecialchars($rows['name'])?></td>
                     <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
                     <td width="10%"><?=htmlspecialchars($rows['retweet_count'])?></td>
                   </tr>
@@ -327,40 +327,32 @@ session_start();
             </table>
           </div>
         </div>
-        
+
         <div class='panel panel-default grid'>
           <div class='panel-heading'>
             <i class='icon-table icon-large'></i>
-            Condensed Table
+            フォロワー数ランキング　Best3
           </div>
           <table class='table table-condensed'>
             <thead>
               <tr>
-                <th>#</th>
-                <th>First Name</th>
-                <th>Last Name</th>
-                <th>Username</th>
+                <th>No</th>
+                <th>Name</th>
+                <th>フォロワー数</th>
+                <th>フォロー数</th>
+                <th>投稿数</th>
               </tr>
             </thead>
             <tbody>
-              <tr>
-                <td>1</td>
-                <td>Mark</td>
-                <td>Otto</td>
-                <td>@mdo</td>
-              </tr>
-              <tr>
-                <td>2</td>
-                <td>Jacob</td>
-                <td>Thornton</td>
-                <td>@fat</td>
-              </tr>
-              <tr>
-                <td>3</td>
-                <td>Larry</td>
-                <td>the Bird</td>
-                <td>@twitter</td>
-              </tr>
+              <?php $i=1; while($rows = $stmt_rt_best3->fetch(PDO::FETCH_ASSOC)){?>
+                <tr class='table'>
+                  <td width="5%"><?= $i; $i++;?></td>
+                  <td width="35%"><?=htmlspecialchars($rows['name'])?></td>
+                  <td width="20%"><?=htmlspecialchars($rows['followers_count'])?></td>
+                  <td width="20%"><?=htmlspecialchars($rows['following_count'])?></td>
+                  <td width="20%"><?=htmlspecialchars($rows['posts_count'])?></td>
+                </tr>
+              <?php }  ?>
             </tbody>
           </table>
         </div>
