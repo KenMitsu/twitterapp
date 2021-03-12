@@ -55,9 +55,9 @@
                     <p>twitter accountとは：＠の後ろの文字列。登録でランキングに参戦可能。※登録は任意</p>
                   </label>
                 </div>
-                <a href="login.html">ログイン画面へ</a>
-                <br><br>
                 <button type="submit"class="btn btn-default">Sign Up</button>
+                <br><br>
+                <a href="login.html">ログイン画面へ戻る</a>
               </div>
             </fieldset>
           </form>
