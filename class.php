@@ -85,7 +85,7 @@ class Tweet
             }
         }
 
-    public function getTweet($screenname)
+    public function getTweet()
         {
             //print_r('getTweetにきてはいるよ'."<br/>");    
             date_default_timezone_set('Asia/Tokyo');
