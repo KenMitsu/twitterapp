@@ -87,7 +87,7 @@ class Tweet
 
     public function getTweet($screenname)
         {
-            print_r('getTweetにきてはいるよ'."<br/>");    
+            //print_r('getTweetにきてはいるよ'."<br/>");    
             date_default_timezone_set('Asia/Tokyo');
 
             try{
@@ -108,51 +108,65 @@ class Tweet
                 ACCESS_TOKEN_SECRET
             );
             print_r('Twitter取得はできているよ'."<br/>");
-            $statuses = $connection->get('statuses/user_timeline',
-                array(
-                    // ユーザー名（@は不要）
-                    'screen_name'       => $screenname,
-                    // ツイート件数
-                    'count'             => '5',
-                    // リプライを除外するかを、true（除外する）、false（除外しない）で指定
-                    'exclude_replies'   => 'false',
-                    // リツイートを含めるかを、true（含める）、false（含めない）で指定
-                    'include_rts'       => 'true',
-                    //falseで、取得した各ツイートデータ内にあるentities（メディア、ハッシュタグ、メンションなどを構造化したデータ）が除外される
-                    //"include_entities" => 'false',
-                )
-            );
+            $account_IDs = $this->getUser();
+            while($account_id = $account_IDs->fetch(PDO::FETCH_ASSOC)){
+                $statuses = $connection->get('statuses/user_timeline',
+                    array(
+                        // ユーザー名（@は不要）
+                        'screen_name'       => $account_id, //スクリーンネーム
+                        // ツイート件数
+                        'count'             => '5',
+                        // リプライを除外するかを、true（除外する）、false（除外しない）で指定
+                        'exclude_replies'   => 'false',
+                        // リツイートを含めるかを、true（含める）、false（含めない）で指定
+                        'include_rts'       => 'true',
+                        //falseで、取得した各ツイートデータ内にあるentities（メディア、ハッシュタグ、メンションなどを構造化したデータ）が除外される
+                        //"include_entities" => 'false',
+                    )
+                );
 
-            if(isset($statuses->errors)){
-                echo 'Error occurred.'.PHP_EOL;
-                echo 'Error message:'.$statuses->errors[0]->message.PHP_EOL;
-            }else{
-                print_r('foreeach手前っす');
-                foreach($statuses as $tweet){
-                    $name = $tweet->user->name;
-                    $followers_count = $tweet->user->followers_count;
-                    $following_count = $tweet->user->friends_count;
-                    $posts_count = $tweet->user->statuses_count;
-        
-                    $contents = $tweet->text;
-                    $favorite_count = $tweet->favorite_count;
-                    $retweet_count = $tweet->retweet_count;
-                    $tweeted_at = $this->getTime($tweet->created_at);
-                    if(!($tweeted_at === "本日の日付ではありません")){
-                        $stmt_tweet->execute(array($name, $contents, $favorite_count, $retweet_count, $tweeted_at));
-                        $rows_tweet=$stmt_tweet->fetchAll(PDO::FETCH_ASSOC);
-                        echo "：取得に成功しました".'<br />';
+                if(isset($statuses->errors)){
+                    echo 'Error occurred.'.PHP_EOL;
+                    echo 'Error message:'.$statuses->errors[0]->message.PHP_EOL;
+                }else{
+                    print_r('foreeach手前っす');
+                    foreach($statuses as $tweet){
+                        $name = $tweet->user->name;
+                        $followers_count = $tweet->user->followers_count;
+                        $following_count = $tweet->user->friends_count;
+                        $posts_count = $tweet->user->statuses_count;
+            
+                        $contents = $tweet->text;
+                        $favorite_count = $tweet->favorite_count;
+                        $retweet_count = $tweet->retweet_count;
+                        $tweeted_at = $this->getTime($tweet->created_at);
+                        if(!($tweeted_at === "本日の日付ではありません")){
+                            $stmt_tweet->execute(array($name, $contents, $favorite_count, $retweet_count, $tweeted_at));
+                            $rows_tweet=$stmt_tweet->fetchAll(PDO::FETCH_ASSOC);
+                            echo "：取得に成功しました".'<br />';
+                        }
                     }
+                    
+                    $today = date("Y/m/d");
+                    //$tomorrow = strtotime("+1 day", $today);
+                    //$jp_time = date('Y/m/d', $tomorrow);
+                    $stmt_user->execute(array($name, $followers_count, $following_count, $posts_count, $today));   
+                    $rows_user=$stmt_user->fetchAll(PDO::FETCH_ASSOC);
                 }
-                
-                $today = date("Y/m/d");
-                //$tomorrow = strtotime("+1 day", $today);
-                //$jp_time = date('Y/m/d', $tomorrow);
-                $stmt_user->execute(array($name, $followers_count, $following_count, $posts_count, $today));   
-                $rows_user=$stmt_user->fetchAll(PDO::FETCH_ASSOC);
             }
         }
-    
+    private function getUser()
+        {
+            try{
+                $sql="SELECT account_id FROM userdata WHERE account_id != ''";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+
     private function getTime($t) //Tue Feb 02 20:46:21 +0000 2021
         {
             date_default_timezone_set('Asia/Tokyo');
