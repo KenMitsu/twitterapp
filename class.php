@@ -107,7 +107,7 @@ class Tweet
                 ACCESS_TOKEN, 
                 ACCESS_TOKEN_SECRET
             );
-            //print_r($connection);
+            print_r($connection);
             //print_r('Twitter取得はできているよ'."<br/>");
             $account_IDs = $this->getUser();
             while($account_id = $account_IDs->fetch(PDO::FETCH_ASSOC)){
