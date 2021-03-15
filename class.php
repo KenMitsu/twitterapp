@@ -142,10 +142,12 @@ class Tweet
                         $favorite_count = $tweet->favorite_count;
                         $retweet_count = $tweet->retweet_count;
                         $tweeted_at = $this->getTime($tweet->created_at);
-                        if(!($tweeted_at === "本日の日付ではありません")){
+                        if(!($tweeted_at === "この時間にTweetはありませんでした")){
                             $stmt_tweet->execute(array($name, $contents, $favorite_count, $retweet_count, $tweeted_at));
                             $rows_tweet=$stmt_tweet->fetchAll(PDO::FETCH_ASSOC);
                             echo "：取得に成功しました".'<br />';
+                        }else{
+                            echo "この時間にTweetはありませんでした".'<br />';
                         }
                     }
                     
@@ -172,15 +174,15 @@ class Tweet
     private function getTime($t) //Tue Feb 02 20:46:21 +0000 2021
         {
             date_default_timezone_set('Asia/Tokyo');
-            $today = strtotime(date("Y/m/d 00:00:00"));
-            $tomorrow = strtotime("+1 day", $today);
+            $current_time = strtotime(date("Y/m/d H:i:s"));
+            $one_hour_later = strtotime("+1 hour", $today);
             
             $timestamp = strtotime($t);//1612298781
             $jp_time = date('Y-m-d H:i:s', $timestamp);//形を戻す　2021-02-03 05:46:21
-            if($today < $timestamp && $timestamp < $tomorrow){
+            if($current_time < $timestamp && $timestamp < $one_hour_later){
                 return $jp_time;
             }else{
-                return "本日の日付ではありません";
+                return "この時間にTweetはありませんでした";
             }
         }
         
