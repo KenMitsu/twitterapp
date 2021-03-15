@@ -100,7 +100,7 @@ class Tweet
             } catch(PDOException $e) {
                 die($e->getMessage()."<br/>");
             }
-            print_r('Twitter取得前です'."<br/>");
+            //print_r('Twitter取得前です'."<br/>");
             $connection = new TwitterOAuth(
                 CONSUMER_KEY, 
                 CONSUMER_SECRET, 
@@ -108,7 +108,7 @@ class Tweet
                 ACCESS_TOKEN_SECRET
             );
             print_r($connection);
-            print_r('Twitter取得はできているよ'."<br/>");
+            //print_r('Twitter取得はできているよ'."<br/>");
             $account_IDs = $this->getUser();
             while($account_id = $account_IDs->fetch(PDO::FETCH_ASSOC)){
                 $statuses = $connection->get('statuses/user_timeline',
@@ -130,7 +130,7 @@ class Tweet
                     echo 'Error occurred.'.PHP_EOL;
                     echo 'Error message:'.$statuses->errors[0]->message.PHP_EOL;
                 }else{
-                    print_r('foreeach手前っす');
+                    //print_r('foreeach手前っす');
                     foreach($statuses as $tweet){
                         $name = $tweet->user->name;
                         $followers_count = $tweet->user->followers_count;
