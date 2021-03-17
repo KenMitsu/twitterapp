@@ -100,15 +100,14 @@ class Tweet
             } catch(PDOException $e) {
                 die($e->getMessage()."<br/>");
             }
-            print_r('Twitter取得前です'."<br/>");
+            //print_r('Twitter取得前です'."<br/>");
             $connection = new TwitterOAuth(
                 CONSUMER_KEY, 
                 CONSUMER_SECRET, 
                 ACCESS_TOKEN, 
                 ACCESS_TOKEN_SECRET
             );
-            print_r($connection);
-            echo($connection);
+            //print_r($connection).'<br />';
             //print_r('Twitter取得はできているよ'."<br/>");
             $account_IDs = $this->getUser();
             while($account_id = $account_IDs->fetch(PDO::FETCH_ASSOC)){
@@ -174,16 +173,30 @@ class Tweet
     private function getTime($t) //Tue Feb 02 20:46:21 +0000 2021
         {
             date_default_timezone_set('Asia/Tokyo');
-            $current_time = strtotime(date("Y/m/d H:i:s"));
-            $one_hour_later = strtotime("+1 hour", $today);
+            $current_timestamp = time();
+            $one_hour_before = strtotime("-1 hour", $current_timestamp);
             
-            $timestamp = strtotime($t);//1612298781
-            $jp_time = date('Y-m-d H:i:s', $timestamp);//形を戻す　2021-02-03 05:46:21
-            if($current_time < $timestamp && $timestamp < $one_hour_later){
+            $tweet_timestamp = strtotime($t);//1612298781
+            $jp_time = date('Y-m-d H:i:s', $tweet_timestamp);//形を戻す　2021-02-03 05:46:21
+            if($one_hour_before < $tweet_timestamp && $tweet_timestamp < $current_timestamp){
                 return $jp_time;
             }else{
                 return "この時間にTweetはありませんでした";
             }
         }
         
+    private function getTimeToday($t) //Tue Feb 02 20:46:21 +0000 2021
+        {
+            date_default_timezone_set('Asia/Tokyo');
+            $today = strtotime(date("Y/m/d 00:00:00"));
+            $tomorrow = strtotime("+1 day", $today);
+            
+            $timestamp = strtotime($t);//1612298781
+            $jp_time = date('Y-m-d H:i:s', $timestamp);//形を戻す　2021-02-03 05:46:21
+            if($today < $timestamp && $timestamp < $tomorrow){
+                return $jp_time;
+            }else{
+                return "この時間にTweetはありませんでした";
+            }
+        }    
 }
