@@ -4,7 +4,7 @@ require_once(__DIR__ . '/class.php');
 //require_once(__DIR__ . '/redaction.php');
 
 $tweet = new Tweet;
-$tweet->test();
+$tweet->getTweet();
 
 ?>
 <input type="button"class="square_btn2" onclick="location.href='./reference/tables.php'" value="メイン画面へ戻る">
