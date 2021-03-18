@@ -91,7 +91,7 @@ class Tweet
             date_default_timezone_set('Asia/Tokyo');
 
             try{
-                $sql_user = 'INSERT INTO user_info (name, followers_count, following_count, posts_count, latest_date) VALUES (?, ?, ?, ?, ?)';
+                $sql_user = 'INSERT INTO user_info (name, followers_count, following_count, posts_count, latest_date, user_id) VALUES (?, ?, ?, ?, ?, ?)';
                 $sql_tweet = 'INSERT INTO tweet_info (name, contents, favorite_count, retweet_count, tweeted_at) VALUES (?, ?, ?, ?, ?)';
                 $stmt_user = $this->dbh->prepare($sql_user);
                 $stmt_tweet = $this->dbh->prepare($sql_tweet);
@@ -133,6 +133,7 @@ class Tweet
                     //print_r('foreeach手前っす');
                     foreach($statuses as $tweet){
                         $name = $tweet->user->name;
+                        $user_id = $tweet->user->id_str;
                         $followers_count = $tweet->user->followers_count;
                         $following_count = $tweet->user->friends_count;
                         $posts_count = $tweet->user->statuses_count;
@@ -153,7 +154,7 @@ class Tweet
                     $today = date("Y/m/d");
                     //$tomorrow = strtotime("+1 day", $today);
                     //$jp_time = date('Y/m/d', $tomorrow);
-                    $stmt_user->execute(array($name, $followers_count, $following_count, $posts_count, $today));   
+                    $stmt_user->execute(array($name, $followers_count, $following_count, $posts_count, $today, $user_id));   
                     $rows_user=$stmt_user->fetchAll(PDO::FETCH_ASSOC);
                 }
             }
