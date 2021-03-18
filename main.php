@@ -6,6 +6,7 @@ require_once(__DIR__ . '/class.php');
 $tweet = new Tweet;
 $tweet->getTweet();
 
+
 ?>
 <input type="button"class="square_btn2" onclick="location.href='./reference/tables.php'" value="メイン画面へ戻る">
 
