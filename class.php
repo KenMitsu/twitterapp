@@ -140,7 +140,7 @@ class Tweet
                         $contents = $tweet->text;
                         $favorite_count = $tweet->favorite_count;
                         $retweet_count = $tweet->retweet_count;
-                        $tweeted_at = $this->getTime($tweet->created_at);
+                        $tweeted_at = $this->getTimeToday($tweet->created_at);
                         if(!($tweeted_at === "この時間にTweetはありませんでした")){
                             $stmt_tweet->execute(array($name, $contents, $favorite_count, $retweet_count, $tweeted_at));
                             $rows_tweet=$stmt_tweet->fetchAll(PDO::FETCH_ASSOC);

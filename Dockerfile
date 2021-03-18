@@ -9,5 +9,5 @@ RUN docker-php-ext-install pdo pdo_pgsql mbstring
 RUN docker-php-ext-install mbstring
 
 RUN apt install -y cron
-RUN echo * * * * * /usr/bin/php /Users/mitsuishikenshirou/Desktop/PHP_samplefile/twitterapp/main.php >> /etc/crontab
+RUN echo * * * * * /var/www/html /Users/mitsuishikenshirou/Desktop/PHP_samplefile/twitterapp/main.php >> /etc/crontab
 CMD ["cron", "-f"]
