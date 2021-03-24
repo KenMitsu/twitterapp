@@ -84,6 +84,28 @@ class Tweet
                 die($e->getMessage());
             }
         }
+    public function conpare()
+        {
+            try{
+                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info ORDER BY followers_count desc limit 3";
+                $sql = "DELETE FROM $table_name
+                    WHERE id NOT IN (
+                      SELECT id FROM(
+                        SELECT * FROM $table_name AS t1
+                        WHERE 1 = (
+                          SELECT COUNT(*) FROM $table_name AS t2
+                          WHERE t1.$column = t2.$column
+                          AND t1.id <= t2.id
+                        )
+                      ) AS tmp
+                    )";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
 
     public function getTweet()
         {

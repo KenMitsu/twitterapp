@@ -1,7 +1,7 @@
 <?php
 
 redaction('tweet_info', 'contents');
-redaction('user_info', 'name');
+redaction('user_info', 'user_id');
 
 function redaction($table_name, $column){
     $DSN = 'pgsql:host=ec2-54-211-55-24.compute-1.amazonaws.com;dbname=db0gg9nfh4bcu6';
