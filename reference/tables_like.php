@@ -117,6 +117,9 @@ session_start();
                     <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
                     <td width="10%"><?=htmlspecialchars($rows['favorite_count'])?></td>
                   </tr>
+                  <style>
+                    td { background-color: #bde9ba; }
+                  </style>
                 <?php }  ?>
               </tbody>
             </table>
