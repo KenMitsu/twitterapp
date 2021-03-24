@@ -33,7 +33,7 @@ session_start();
   <body class='main page'>
     <!-- Navbar -->
     <div class='navbar navbar-default' id='navbar'>
-      <a class='navbar-brand' href='./tables.php'>
+      <a class='navbar-brand' href='./tables.phps'>
         <i class='icon-beer'></i>
         CINC　Twitter　System
       </a>
@@ -41,7 +41,7 @@ session_start();
         <li class='dropdown user'>
           <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
             <i class='icon-user'></i>
-            <strong>$row['nickname'];</strong>
+            <strong>$row['nickname']</strong>
             <img class="img-rounded" src="http://placehold.it/20x20/ccc/777" />
             <b class='caret'></b>
           </a>
