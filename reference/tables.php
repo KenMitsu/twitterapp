@@ -9,12 +9,6 @@ session_start();
     $stmt_favorite_best3 = $tweet->favorite_best3();
     $stmt_rt_best3 = $tweet->rt_best3();
     $stmt_followers_best3 = $tweet->followers_best3();
-
-    $dbh = new Database();
-    $pdo = $dbh->getDBH();
-    $stmt_nickname = $pdo->prepare('select * from userdata where username = ?');
-    $stmt_nickname->execute([$_POST['username']]);
-    $row = $stmt_nickname->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -39,18 +33,11 @@ session_start();
       </a>
       <ul class='nav navbar-nav pull-right'>
         <li class='dropdown user'>
-          <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
+          <a class='dropdown-toggle' data-toggle='dropdown' href='./logout.html'>Sign out</a>
             <i class='icon-user'></i>
-            <strong><?php $row['nickname']?></strong>
             <img class="img-rounded" src="http://placehold.it/20x20/ccc/777" />
             <b class='caret'></b>
           </a>
-          <ul class='dropdown-menu'>
-            <li class='divider'></li>
-            <li>
-              <a href="./logout.html">Sign out</a>
-            </li>
-          </ul>
         </li>
       </ul>
     </div>
@@ -94,7 +81,7 @@ session_start();
         <ul class='breadcrumb' id='breadcrumb'>
           <li class='title'>Tables</li>
         </ul>
-        
+
         <div id='toolbar'>
           <div class='btn-group'>
             <a class='btn' data-toggle='toolbar-tooltip' href='#' title='Building'>
