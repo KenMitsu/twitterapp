@@ -23,7 +23,7 @@ session_start();
     <link href="assets/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css" /><link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/images/favicon.ico" rel="icon" type="image/ico" />
     <style>
-      table tr:nth-child(2){background-color:#ffe0ff;}
+      table tr:nth-child(2){background-color:"#ffe0ff";}
       table tr:nth-child(3){background-color:#ffe8ff;}
       table tr:nth-child(4){background-color:#fff0ff;}
     </style>
