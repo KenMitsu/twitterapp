@@ -41,7 +41,7 @@ session_start();
         <li class='dropdown user'>
           <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
             <i class='icon-user'></i>
-            <strong>$row['nickname']</strong>
+            <strong>$row['nickname'];</strong>
             <img class="img-rounded" src="http://placehold.it/20x20/ccc/777" />
             <b class='caret'></b>
           </a>
@@ -62,45 +62,29 @@ session_start();
       <section id='sidebar'>
         <i class='icon-align-justify icon-large' id='toggle'></i>
         <ul id='dock'>
-          <li class='launcher'>
-            <i class='icon-dashboard'></i>
-            <a href="dashboard.php">Dashboard</a>
-          </li>
-          <li class='launcher'>
-            <i class='icon-file-text-alt'></i>
-            <a href="forms.html">Forms</a>
-          </li>
-          <li class='active launcher'>
-            <i class='icon-table'></i>
-            <a href="tables.php">Tables</a>
-          </li>
           <li class='launcher dropdown hover'>
-            <i class='icon-flag'></i>
-            <a href='#'>Reports</a>
+            <i class='icon-table'></i>
+            <a href="#">Ranking Tables</a>
             <ul class='dropdown-menu'>
-              <li class='dropdown-header'>Launcher description</li>
+              <li class='dropdown-header'>Ranking List</li>
               <li>
-                <a href='#'>Action</a>
+                <a href='#'>いいね数ランキング</a>
               </li>
               <li>
-                <a href='#'>Another action</a>
+                <a href='#'>RT数ランキング</a>
               </li>
               <li>
-                <a href='#'>Something else here</a>
+                <a href='#'>フォロワー数ランキング</a>
               </li>
             </ul>
           </li>
           <li class='launcher'>
-            <i class='icon-bookmark'></i>
-            <a href='#'>Bookmarks</a>
+            <i class='icon-dashboard'></i>
+            <a href="dashboard.php">All List</a>
           </li>
           <li class='launcher'>
-            <i class='icon-cloud'></i>
-            <a href='#'>Backup</a>
-          </li>
-          <li class='launcher'>
-            <i class='icon-bug'></i>
-            <a href='#'>Feedback</a>
+            <i class='icon-file-text-alt'></i>
+            <a href="forms.html">Forms</a>
           </li>
         </ul>
         <div data-toggle='tooltip' id='beaker' title='Made by lab2023'></div>
