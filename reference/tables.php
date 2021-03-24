@@ -35,14 +35,14 @@ session_start();
         <li class='dropdown user'>
           <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
             <i class='icon-user'></i>
-            <strong>John DOE</strong>
+            <strong>Log out</strong>
             <img class="img-rounded" src="http://placehold.it/20x20/ccc/777" />
             <b class='caret'></b>
           </a>
           <ul class='dropdown-menu'>
             <li class='divider'></li>
             <li>
-              <a href="./logout.html">Sign out</a>
+              <a href="./logout.html">Log out</a>
             </li>
           </ul>
         </li>
