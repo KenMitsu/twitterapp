@@ -33,10 +33,10 @@ session_start();
       </a>
       <ul class='nav navbar-nav pull-right'>
         <li class='dropdown user'>
-          <a class='dropdown-toggle' data-toggle='dropdown' href='./logout.html'>Sign out</a>
+          <a class='dropdown-toggle' data-toggle='dropdown' href='./logout.html'>
             <i class='icon-user'></i>
             <img class="img-rounded" src="http://placehold.it/20x20/ccc/777" />
-            <b class='caret'></b>
+            <b class='caret'>Sign out</b>
           </a>
         </li>
       </ul>
