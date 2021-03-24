@@ -41,7 +41,7 @@ session_start();
         <li class='dropdown user'>
           <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
             <i class='icon-user'></i>
-            <strong>$row['nickname']</strong>
+            <strong><?php $row['nickname']?></strong>
             <img class="img-rounded" src="http://placehold.it/20x20/ccc/777" />
             <b class='caret'></b>
           </a>
@@ -93,8 +93,6 @@ session_start();
       <section id='tools'>
         <ul class='breadcrumb' id='breadcrumb'>
           <li class='title'>Tables</li>
-          <li><a href="#">Lorem</a></li>
-          <li class='active'><a href="#">ipsum</a></li>
         </ul>
         <div id='toolbar'>
           <div class='btn-group'>
