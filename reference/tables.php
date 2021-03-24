@@ -74,7 +74,7 @@ session_start();
             <a href="forms.html">Forms</a>
           </li>
         </ul>
-        <div data-toggle='tooltip' id='beaker' title='Made by lab2023'></div>
+        <div data-toggle='tooltip' id='beaker' title='Made by Mitsuishi'></div>
       </section>
       <!-- Tools -->
       <section id='tools'>
