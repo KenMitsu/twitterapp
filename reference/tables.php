@@ -9,6 +9,12 @@ session_start();
     $stmt_favorite_best3 = $tweet->favorite_best3();
     $stmt_rt_best3 = $tweet->rt_best3();
     $stmt_followers_best3 = $tweet->followers_best3();
+
+    $dbh = new Database();
+    $pdo = $dbh->getDBH();
+    $stmt_nickname = $pdo->prepare('select * from userdata where username = ?');
+    $stmt_nickname->execute([$_POST['username']]);
+    $row = $stmt_nickname->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html>
@@ -32,45 +38,14 @@ session_start();
         CINC　Twitter　System
       </a>
       <ul class='nav navbar-nav pull-right'>
-        <li class='dropdown'>
-          <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-            <i class='icon-envelope'></i>
-            Messages
-            <span class='badge'>5</span>
-            <b class='caret'></b>
-          </a>
-          <ul class='dropdown-menu'>
-            <li>
-              <a href='#'>New message</a>
-            </li>
-            <li>
-              <a href='#'>Inbox</a>
-            </li>
-            <li>
-              <a href='#'>Out box</a>
-            </li>
-            <li>
-              <a href='#'>Trash</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href='#'>
-            <i class='icon-cog'></i>
-            Settings
-          </a>
-        </li>
         <li class='dropdown user'>
           <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
             <i class='icon-user'></i>
-            <strong>John DOE</strong>
+            <strong>$row['nickname'];</strong>
             <img class="img-rounded" src="http://placehold.it/20x20/ccc/777" />
             <b class='caret'></b>
           </a>
           <ul class='dropdown-menu'>
-            <li>
-              <a href='#'>Edit Profile</a>
-            </li>
             <li class='divider'></li>
             <li>
               <a href="./logout.html">Sign out</a>
