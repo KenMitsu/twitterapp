@@ -22,7 +22,11 @@ session_start();
     <meta content='' name='keywords'>
     <link href="assets/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css" /><link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/images/favicon.ico" rel="icon" type="image/ico" />
-    
+    <style>
+      td { 
+      background-color: #bde9ba;
+      }
+    </style>
   </head>
   <body class='main page'>
     <!-- Navbar -->
@@ -117,9 +121,6 @@ session_start();
                     <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
                     <td width="10%"><?=htmlspecialchars($rows['favorite_count'])?></td>
                   </tr>
-                  <style>
-                    td { background-color: #bde9ba; }
-                  </style>
                 <?php }  ?>
               </tbody>
             </table>
