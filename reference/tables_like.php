@@ -24,7 +24,7 @@ session_start();
     <link href="assets/images/favicon.ico" rel="icon" type="image/ico" />
     <style>
       td { 
-      background-color: #800080;
+      background-color: #4682B4;
       }
     </style>
   </head>
