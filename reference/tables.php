@@ -33,11 +33,18 @@ session_start();
       </a>
       <ul class='nav navbar-nav pull-right'>
         <li class='dropdown user'>
-          <a class='dropdown-toggle' data-toggle='dropdown' href='./logout.html'>
+          <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
             <i class='icon-user'></i>
+            <strong>John DOE</strong>
             <img class="img-rounded" src="http://placehold.it/20x20/ccc/777" />
-            <b class='caret'>Sign out</b>
+            <b class='caret'></b>
           </a>
+          <ul class='dropdown-menu'>
+            <li class='divider'></li>
+            <li>
+              <a href="./logout.html">Sign out</a>
+            </li>
+          </ul>
         </li>
       </ul>
     </div>
