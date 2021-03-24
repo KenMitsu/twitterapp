@@ -116,7 +116,7 @@ session_start();
               <tbody>
                 <?php $i=1; while($rows = $stmt_favorite_best3->fetch(PDO::FETCH_ASSOC)){?>
                   <tr class='table'>
-                    <td width="5%" bgcolor=#bde9ba><?= $i; $i++;?></td>
+                    <td width="5%" bgcolor="#bde9ba"><?= $i; $i++;?></td>
                     <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
                     <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
                     <td width="10%"><?=htmlspecialchars($rows['favorite_count'])?></td>
