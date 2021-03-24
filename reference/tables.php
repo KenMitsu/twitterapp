@@ -62,7 +62,7 @@ session_start();
             <ul class='dropdown-menu'>
               <li class='dropdown-header'>Ranking List</li>
               <li>
-                <a href='#'>いいね数ランキング</a>
+                <a href='./tables_like.php'>いいね数ランキング</a>
               </li>
               <li>
                 <a href='#'>RT数ランキング</a>
