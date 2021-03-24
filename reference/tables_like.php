@@ -24,8 +24,6 @@ session_start();
     <link href="assets/images/favicon.ico" rel="icon" type="image/ico" />
     <style>
       table tr:nth-child(1){background:#ffe0ff;}
-      table tr:nth-child(3){background:#ffe8ff;}
-      table tr:nth-child(4){background:#fff0ff;}
     </style>
   </head>
   <body class='main page'>
@@ -116,7 +114,7 @@ session_start();
               <tbody>
                 <?php $i=1; while($rows = $stmt_favorite_best3->fetch(PDO::FETCH_ASSOC)){?>
                   <tr class='table'>
-                    <td width="5%"><?= $i; $i++;?></td>
+                    <td width="5%" height="100"><?= $i; $i++;?></td>
                     <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
                     <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
                     <td width="10%"><?=htmlspecialchars($rows['favorite_count'])?></td>
