@@ -48,7 +48,7 @@ require_once('../class.php');
                     $account_id = $_POST['account_id'];
 
                     //パスワードの正規表現
-                    if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i', $_POST['password'])) {
+                    if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[!-~]{8,100}+\z/i', $_POST['password'])) {//'/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i'
                       $password = password_hash($_POST['password'], PASSWORD_DEFAULT);
                     } else {
                       echo 'パスワードは半角英数字をそれぞれ1文字以上を含む、合計8文字以上で設定してください。';
