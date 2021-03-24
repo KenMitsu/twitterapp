@@ -45,9 +45,6 @@
                   </label>
                 </div>
                 <div class='form-group'>
-                  <input class='form-control' id="nickname" placeholder='nickname' type='text' name="nickname" autocorrect="off" autocapitalize="off">
-                </div>
-                <div class='form-group'>
                   <input class='form-control' id="account_id" placeholder='twitter_account_id' type='text' name="account_id" autocorrect="off" autocapitalize="off">
                 </div>
                 <div>

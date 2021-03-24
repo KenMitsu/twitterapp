@@ -44,7 +44,6 @@ require_once('../class.php');
 
                     //POSTのValidate
                     $username = $_POST['username'];
-                    $nickname = $_POST['nickname'];
                     $account_id = $_POST['account_id'];
 
                     //パスワードの正規表現
@@ -59,22 +58,10 @@ require_once('../class.php');
                       return false;
                     }
 
-                    //nicknameがあるかどうか
-                    /*
-                    if(!isset($nickname)){
-                      echo 'ニックネームを入力してください'
-                      print <<<EOH
-                      <br><br>
-                      <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">登録画面に戻る</button>
-                    EOH;
-                      return false;
-                    }
-                    */
-
                     //登録処理
                     try {
-                      $stmt = $pdo->prepare("insert into userdata(username, password, nickname, account_id) values(?, ?, ?, ?)");
-                      $stmt->execute([$username, $password, $nickname, $account_id]);
+                      $stmt = $pdo->prepare("insert into userdata(username, password, account_id) values(?, ?, ?)");
+                      $stmt->execute([$username, $password, $account_id]);
                       echo '登録完了!';
                       print <<<EOH
                       <br>

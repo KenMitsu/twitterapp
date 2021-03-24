@@ -94,6 +94,7 @@ session_start();
         <ul class='breadcrumb' id='breadcrumb'>
           <li class='title'>Tables</li>
         </ul>
+        
         <div id='toolbar'>
           <div class='btn-group'>
             <a class='btn' data-toggle='toolbar-tooltip' href='#' title='Building'>
