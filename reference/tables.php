@@ -33,7 +33,7 @@ session_start();
   <body class='main page'>
     <!-- Navbar -->
     <div class='navbar navbar-default' id='navbar'>
-      <a class='navbar-brand' href='#'>
+      <a class='navbar-brand' href='./tables.php'>
         <i class='icon-beer'></i>
         CINC　Twitter　System
       </a>
