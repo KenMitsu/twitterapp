@@ -84,37 +84,26 @@ class Tweet
                 die($e->getMessage());
             }
         }
-    public function conpare()
+    public function collect()
         {
             try{
-                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info ORDER BY followers_count desc limit 3";
-                $sql = "DELETE FROM $table_name
-                    WHERE id NOT IN (
-                      SELECT id FROM(
-                        SELECT * FROM $table_name AS t1
-                        WHERE 1 = (
-                          SELECT COUNT(*) FROM $table_name AS t2
-                          WHERE t1.$column = t2.$column
-                          AND t1.id <= t2.id
-                        )
-                      ) AS tmp
-                    )";
+                $sql="INSERT INTO collect (date, user_id, followers_count) SELECT date, user_id, followers_count FROM user_info";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
+                echo 'インサートしました';
                 return $stmt;
               }catch(PDOException $e){
                 die($e->getMessage());
             }
         }
-
-    public function getTweet()
+    public function getTweet($number_of_tweet)
         {
             //print_r('getTweetにきてはいるよ'."<br/>");    
             date_default_timezone_set('Asia/Tokyo');
 
             try{
-                $sql_user = 'INSERT INTO user_info (name, followers_count, following_count, posts_count, latest_date, user_id) VALUES (?, ?, ?, ?, ?, ?)';
-                $sql_tweet = 'INSERT INTO tweet_info (name, contents, favorite_count, retweet_count, tweeted_at) VALUES (?, ?, ?, ?, ?)';
+                $sql_user = 'INSERT INTO user_info (name, followers_count, following_count, posts_count, latest_time, user_id, date) VALUES (?, ?, ?, ?, ?, ?, ?)';
+                $sql_tweet = 'INSERT INTO tweet_info (name, contents, favorite_count, retweet_count, tweeted_at, date) VALUES (?, ?, ?, ?, ?, ?)';
                 $stmt_user = $this->dbh->prepare($sql_user);
                 $stmt_tweet = $this->dbh->prepare($sql_tweet);
     
@@ -137,12 +126,12 @@ class Tweet
                     array(
                         // ユーザー名（@は不要）
                         'screen_name'       => $account_id, //スクリーンネーム
-                        // ツイート件数
-                        'count'             => '5',
+                        // 取得したいツイート件数
+                        'count'             => $number_of_tweet,
                         // リプライを除外するかを、true（除外する）、false（除外しない）で指定
-                        'exclude_replies'   => 'false',
+                        'exclude_replies'   => 'true',
                         // リツイートを含めるかを、true（含める）、false（含めない）で指定
-                        'include_rts'       => 'true',
+                        'include_rts'       => 'false',
                         //falseで、取得した各ツイートデータ内にあるentities（メディア、ハッシュタグ、メンションなどを構造化したデータ）が除外される
                         //"include_entities" => 'false',
                     )
@@ -163,9 +152,10 @@ class Tweet
                         $contents = $tweet->text;
                         $favorite_count = $tweet->favorite_count;
                         $retweet_count = $tweet->retweet_count;
-                        $tweeted_at = $this->getTime($tweet->created_at);
+                        $tweeted_at = $this->getTimeToday($tweet->created_at);
                         if(!($tweeted_at === "この時間にTweetはありませんでした")){
-                            $stmt_tweet->execute(array($name, $contents, $favorite_count, $retweet_count, $tweeted_at));
+                            $date = date("Y-m-d", time());
+                            $stmt_tweet->execute(array($name, $contents, $favorite_count, $retweet_count, $tweeted_at, $date));
                             $rows_tweet=$stmt_tweet->fetchAll(PDO::FETCH_ASSOC);
                             echo "：取得に成功しました".'<br />';
                         }else{
@@ -173,10 +163,9 @@ class Tweet
                         }
                     }
                     
-                    $today = date("Y/m/d");
-                    //$tomorrow = strtotime("+1 day", $today);
-                    //$jp_time = date('Y/m/d', $tomorrow);
-                    $stmt_user->execute(array($name, $followers_count, $following_count, $posts_count, $today, $user_id));   
+                    $time = date("H:i:s", time());
+                    $date = date("Y-m-d", time());
+                    $stmt_user->execute(array($name, $followers_count, $following_count, $posts_count, $time, $user_id, $date));   
                     $rows_user=$stmt_user->fetchAll(PDO::FETCH_ASSOC);
                 }
             }
@@ -221,5 +210,26 @@ class Tweet
             }else{
                 return "この時間にTweetはありませんでした";
             }
-        }    
+        }
+    public function redaction($table_name, $column)
+        {
+            try {
+                $delete_sql = "DELETE FROM $table_name
+                            WHERE id NOT IN (
+                              SELECT id FROM(
+                                SELECT * FROM $table_name AS t1
+                                WHERE 1 = (
+                                  SELECT COUNT(*) FROM $table_name AS t2
+                                  WHERE t1.$column = t2.$column
+                                  AND t1.id <= t2.id
+                                )
+                              ) AS tmp
+                            )";
+                $stmt = $this->dbh->prepare($delete_sql);
+                $stmt->execute([]);  
+                return $stmt;
+            } catch (PDOException $e) {
+                die($e->getMessage());
+            }
+        }           
 }
