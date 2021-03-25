@@ -38,6 +38,7 @@ use Abraham\TwitterOAuth\TwitterOAuth;
                 //取得成功②
                 foreach($statuses->statuses as $tweet){
                         echo '<p>';
+                        echo 'aaa';
                         print_r('ステータスID: ' . $tweet->id . '<br>');
                         echo '名前: ' . $tweet->user->name . '<br>';
                         echo 'ユーザー名(screen_name): ' . $tweet->user->screen_name . '<br>';
