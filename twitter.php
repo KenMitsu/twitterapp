@@ -15,9 +15,7 @@
         <h2>Practice</h2>
         <pre>
             <?php
-                
                 require "/Users/mitsuishikenshirou/Desktop/PHP_samplefile/Twitter/twitteroauth-2.0.1/autoload.php";
-
                 use Abraham\TwitterOAuth\TwitterOAuth;
 
                 //Twitter developersから取得した値を代入
@@ -26,6 +24,8 @@
                 $consumerSecret = 'QspA5uKltPv9Pm69sVQ6Ja0TChkuWE2a3qfw5CwD4lv7qUiAB0';
                 $accessToken = '1026662805221437441-HbhCerssmsLCUyiL6bTu941hrYw2hZ';
                 $accessTokenSecret = 'F5uGgjMh4cGr6lldshARLtcnAMEdocBtXpHQSvG8LWaIp';
+
+                echo 'ここまではきている';
 
                 //検索ワードやパラメータを指定①
                 $quary = 'ヨルシカ';
