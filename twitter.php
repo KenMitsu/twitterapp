@@ -1,18 +1,13 @@
-
 <?php
+// TwitterOAuthを利用するためComposerのautoload.phpを読み込み
+require __DIR__ . '/vendor/autoload.php';
+require "vendor/abraham/twitteroauth/autoload.php";
 // TwitterOAuthクラスをインポート
 use Abraham\TwitterOAuth\TwitterOAuth;
     getTweetTest();
 
     function getTweetTest()
         {
-            var_dump('1');
-            // TwitterOAuthを利用するためComposerのautoload.phpを読み込み
-            require __DIR__ . '/vendor/autoload.php';
-            require "vendor/abraham/twitteroauth/autoload.php";
-
-            var_dump('2');
-        
             //Twitter developersから取得した値を代入
             //マーケ×エンジニア　SEO運用中アカウント
             $consumerKey = 'VyVWxGFvvJRVUlID0Db0fDfQG';
@@ -23,7 +18,6 @@ use Abraham\TwitterOAuth\TwitterOAuth;
         
             //検索ワードやパラメータを指定①
             $quary = 'ヨルシカ';
-            var_dump('3');
     
             $connection = new TwitterOAuth($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
             var_dump($connection);
