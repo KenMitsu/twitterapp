@@ -1,6 +1,7 @@
 
 <?php
-
+// TwitterOAuthクラスをインポート
+use Abraham\TwitterOAuth\TwitterOAuth;
     getTweetTest();
 
     function getTweetTest()
@@ -9,8 +10,7 @@
             require __DIR__ . '/vendor/autoload.php';
             require "vendor/abraham/twitteroauth/autoload.php";
 
-            // TwitterOAuthクラスをインポート
-            use Abraham\TwitterOAuth\TwitterOAuth;
+            
         
             //Twitter developersから取得した値を代入
             //マーケ×エンジニア　SEO運用中アカウント
