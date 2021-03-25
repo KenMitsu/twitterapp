@@ -6,11 +6,12 @@ use Abraham\TwitterOAuth\TwitterOAuth;
 
     function getTweetTest()
         {
+            var_dump('1');
             // TwitterOAuthを利用するためComposerのautoload.phpを読み込み
             require __DIR__ . '/vendor/autoload.php';
             require "vendor/abraham/twitteroauth/autoload.php";
 
-            
+            var_dump('2');
         
             //Twitter developersから取得した値を代入
             //マーケ×エンジニア　SEO運用中アカウント
@@ -26,6 +27,7 @@ use Abraham\TwitterOAuth\TwitterOAuth;
             $connection = new TwitterOAuth($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
             //$quaryの条件でツイートを検索
             $statuses = $connection->get('search/tweets',['q' => $quary, 'count' => 5, 'tweet_mode' => 'extended']);
+            var_dump('3');
         
             if(isset($statuses->errors)) {
                 //取得失敗
