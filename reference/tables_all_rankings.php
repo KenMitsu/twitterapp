@@ -202,6 +202,7 @@ session_start();
                 <th>Name</th>
                 <th>Tweet</th>
                 <th>いいね数</th>
+                <th class='actions'>Twitterへ</th>
               </tr>
             </thead>
             <tbody>
@@ -209,8 +210,13 @@ session_start();
                 <tr class='table'>
                   <td width="5%"><?= $i; $i++;?></td>
                   <td width=20%"><?=htmlspecialchars($rows['name'])?></td>
-                  <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
+                  <td width="65%"><?=htmlspecialchars($rows['contents'])?></td>
                   <td width="5%"><?=htmlspecialchars($rows['favorite_count'])?></td>
+                  <td width="5%" class='action'>
+                    <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
+                      <i class='icon-zoom-in'></i>
+                    </a>
+                  </td>
                 </tr>
               <?php }  ?>
             </tbody>
