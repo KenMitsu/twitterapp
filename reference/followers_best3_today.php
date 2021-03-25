@@ -4,10 +4,7 @@ session_start();
 
 //DB内でPOSTされたメールアドレスを検索
     $tweet = new Tweet();
-    $stmt_favorite_best3_today = $tweet->favorite_best3_today();
-    $stmt_rt_best3_today = $tweet->rt_best3_today();
     $stmt_followers_best3_today = $tweet->followers_best3_today();
-    $stmt_favorite_all_today = $tweet->favorite_all_today();
 ?>
 
 <!DOCTYPE html>
@@ -21,8 +18,11 @@ session_start();
     <meta content='' name='keywords'>
     <link href="assets/stylesheets/application-a07755f5.css" rel="stylesheet" type="text/css" /><link href="//netdna.bootstrapcdn.com/font-awesome/3.2.0/css/font-awesome.min.css" rel="stylesheet" type="text/css" />
     <link href="assets/images/favicon.ico" rel="icon" type="image/ico" />
-    
+    <style>
+      table tr:nth-child(1){background:#ffe0ff;}
+    </style>
   </head>
+
   <body class='main page'>
     <!-- Navbar -->
     <div class='navbar navbar-default' id='navbar'>
@@ -49,8 +49,6 @@ session_start();
     </div>
     <div id='wrapper'>
 
-
-
       <!-- Sidebar -->
       <section id='sidebar'>
         <i class='icon-align-justify icon-large' id='toggle'></i>
@@ -59,7 +57,7 @@ session_start();
             <i class='icon-table'></i>
             <a href="./tables.php">Today's</a>
             <ul class='dropdown-menu'>
-              <li class='dropdown-header'>Today's Ranking Best3</li>
+              <li class='dropdown-header'>Ranking List</li>
               <li>
                 <a href='./favorite_best3_today.php'>いいね数ランキング</a>
               </li>
@@ -82,10 +80,16 @@ session_start();
         </ul>
         <div data-toggle='tooltip' id='beaker' title='Made by Mitsuishi'></div>
       </section>
+
       <!-- Tools -->
       <section id='tools'>
         <ul class='breadcrumb' id='breadcrumb'>
-          <li class='title'>Today's Ranking List</li>
+          <li class='title'>
+              <a href="./followers_best3_today.php">Best3</a>
+          </li>
+          <li class='title'>
+              <a href="./followers_all_today.php">All Rankings</a>
+          </li>
         </ul>
       </section>
 
@@ -93,64 +97,6 @@ session_start();
 
       <!-- Content -->
       <div id='content'>
-        <div class='panel panel-default grid'>
-          <div class='panel-heading'>
-            <i class='icon-table icon-large'></i>
-            本日のいいね数ランキング Best3
-          </div>
-          <div class='panel-body'>
-            <table class='table table-bordered'>
-              <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Name</th>
-                  <th>Tweet</th>
-                  <th>いいね数</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php $i=1; while($rows = $stmt_favorite_best3_today->fetch(PDO::FETCH_ASSOC)){?>
-                  <tr class='table'>
-                    <td width="5%"><?= $i; $i++;?></td>
-                    <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
-                    <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
-                    <td width="10%"><?=htmlspecialchars($rows['favorite_count'])?></td>
-                  </tr>
-                <?php }  ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
-        <div class='panel panel-default grid'>
-          <div class='panel-heading'>
-            <i class='icon-table icon-large'></i>
-            本日のRT数ランキング Best3
-          </div>
-          <div class='panel-body'>
-            <table class='table table-bordered'>
-              <thead>
-                <tr>
-                  <th>No</th>
-                  <th>Name</th>
-                  <th>Tweet</th>
-                  <th>RT数</th>
-                </tr>
-              </thead>
-              <tbody>
-                <?php $i=1; while($rows = $stmt_rt_best3_today->fetch(PDO::FETCH_ASSOC)){?>
-                  <tr class='table'>
-                    <td width="5%"><?= $i; $i++;?></td>
-                    <td width="15%"><?=htmlspecialchars($rows['name'])?></td>
-                    <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
-                    <td width="10%"><?=htmlspecialchars($rows['retweet_count'])?></td>
-                  </tr>
-                <?php } ?>
-              </tbody>
-            </table>
-          </div>
-        </div>
-
         <div class='panel panel-default grid'>
           <div class='panel-heading'>
             <i class='icon-table icon-large'></i>
@@ -169,7 +115,7 @@ session_start();
               </thead>
               <tbody>
                 <?php $i=1; while($rows = $stmt_followers_best3_today->fetch(PDO::FETCH_ASSOC)){?>
-                  <tr class='table'>
+                  <tr class='table' height="80">
                     <td width="5%"><?= $i; $i++;?></td>
                     <td width="35%"><?=htmlspecialchars($rows['name'])?></td>
                     <td width="20%"><?=htmlspecialchars($rows['followers_count'])?></td>
@@ -180,43 +126,8 @@ session_start();
               </tbody>
             </table>
           </div>
-        </div>
-
-        <div class='panel panel-default grid'>
-          <div class='panel-heading'>
-            <i class='icon-table icon-large'></i>
-            本日のツイート一覧
-            <div class='panel-tools'>
-              <div class='btn-group'>
-                <a class='btn' data-toggle='toolbar-tooltip' href='./tables.php' title='Reload'>
-                  <i class='icon-refresh'></i>
-                </a>
-              </div>
-            </div>
           </div>
-          <table class='table'>
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Tweet</th>
-                <th>いいね数</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php $i=1; while($rows = $stmt_favorite_all_today->fetch(PDO::FETCH_ASSOC)){?>
-                <tr class='table'>
-                  <td width="5%"><?= $i; $i++;?></td>
-                  <td width=20%"><?=htmlspecialchars($rows['name'])?></td>
-                  <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
-                  <td width="5%"><?=htmlspecialchars($rows['favorite_count'])?></td>
-                </tr>
-              <?php }  ?>
-            </tbody>
-          </table>
         </div>
-      </div>
-    </div>
 
 
     <!-- Footer -->

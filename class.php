@@ -40,10 +40,21 @@ class Tweet
                 die($e->getMessage());
               }
         }
-    public function tweetlist_all()
+    public function favorite_all()
         {
             try{
                 $sql="SELECT name, contents, favorite_count FROM tweet_info ORDER BY favorite_count desc";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function favorite_all_today()
+        {
+            try{
+                $sql="SELECT name, contents, favorite_count FROM tweet_info where date = CURRENT_DATE ORDER BY favorite_count desc";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
@@ -62,6 +73,39 @@ class Tweet
                 die($e->getMessage());
             }
         }
+    public function favorite_best3_today()
+        {
+            try{
+                $sql="SELECT name, contents, favorite_count FROM tweet_info where date = CURRENT_DATE ORDER BY favorite_count desc limit 3";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function rt_all()
+        {
+            try{
+                $sql="SELECT name, contents, retweet_count FROM tweet_info ORDER BY retweet_count desc";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function rt_all_today()
+        {
+            try{
+                $sql="SELECT name, contents, retweet_count FROM tweet_info where date = CURRENT_DATE ORDER BY retweet_count desc";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
     public function rt_best3()
         {
             try{
@@ -73,10 +117,54 @@ class Tweet
                 die($e->getMessage());
             }
         }
+    public function rt_best3_today()
+        {
+            try{
+                $sql="SELECT name, contents, retweet_count FROM tweet_info where date = CURRENT_DATE ORDER BY retweet_count desc limit 3";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function followers_all()
+        {
+            try{
+                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info ORDER BY followers_count desc";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function followers_all_today()
+        {
+            try{
+                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info where date = CURRENT_DATE ORDER BY followers_count desc";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
     public function followers_best3()
         {
             try{
                 $sql="SELECT name, followers_count, following_count, posts_count FROM user_info ORDER BY followers_count desc limit 3";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function followers_best3_today()
+        {
+            try{
+                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info where date = CURRENT_DATE ORDER BY followers_count desc limit 3";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;

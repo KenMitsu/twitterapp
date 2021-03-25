@@ -61,19 +61,19 @@ session_start();
             <ul class='dropdown-menu'>
               <li class='dropdown-header'>Today's Ranking Best3</li>
               <li>
-                <a href='./favorite_best3_today.php'>いいね数ランキング</a>
+                <a href='./tables_like_best3.php'>いいね数ランキング</a>
               </li>
               <li>
-                <a href='./rt_best3_today.php'>RT数ランキング</a>
+                <a href='#'>RT数ランキング</a>
               </li>
               <li>
-                <a href='./followers_best3_today.php'>フォロワー数ランキング</a>
+                <a href='#'>フォロワー数ランキング</a>
               </li>
             </ul>
           </li>
           <li class='launcher'>
             <i class='icon-dashboard'></i>
-            <a href="tables_all_rankings.php">All Rankings</a>
+            <a href="dashboard.php">All Rankings</a>
           </li>
           <li class='launcher'>
             <i class='icon-file-text-alt'></i>
@@ -188,9 +188,35 @@ session_start();
             本日のツイート一覧
             <div class='panel-tools'>
               <div class='btn-group'>
-                <a class='btn' data-toggle='toolbar-tooltip' href='./tables.php' title='Reload'>
+                <a class='btn' href='#'>
+                  <i class='icon-wrench'></i>
+                  Settings
+                </a>
+                <a class='btn' href='#'>
+                  <i class='icon-filter'></i>
+                  Filters
+                </a>
+                <a class='btn' data-toggle='toolbar-tooltip' href='#' title='Reload'>
                   <i class='icon-refresh'></i>
                 </a>
+              </div>
+              <div class='badge'>3 record</div>
+            </div>
+          </div>
+          <div class='panel-body filters'>
+            <div class='row'>
+              <div class='col-md-9'>
+                Add your custom filters here...
+              </div>
+              <div class='col-md-3'>
+                <div class='input-group'>
+                  <input class='form-control' placeholder='Quick search...' type='text'>
+                  <span class='input-group-btn'>
+                    <button class='btn' type='button'>
+                      <i class='icon-search'></i>
+                    </button>
+                  </span>
+                </div>
               </div>
             </div>
           </div>
@@ -201,19 +227,71 @@ session_start();
                 <th>Name</th>
                 <th>Tweet</th>
                 <th>いいね数</th>
+                <th class='actions'>
+                  Actions
+                </th>
               </tr>
             </thead>
             <tbody>
               <?php $i=1; while($rows = $stmt_favorite_all_today->fetch(PDO::FETCH_ASSOC)){?>
                 <tr class='table'>
                   <td width="5%"><?= $i; $i++;?></td>
-                  <td width=20%"><?=htmlspecialchars($rows['name'])?></td>
-                  <td width="70%"><?=htmlspecialchars($rows['contents'])?></td>
+                  <td width=15%"><?=htmlspecialchars($rows['name'])?></td>
+                  <td width="65%"><?=htmlspecialchars($rows['contents'])?></td>
                   <td width="5%"><?=htmlspecialchars($rows['favorite_count'])?></td>
+                  <td width="10%" class='action'>
+                    <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
+                      <i class='icon-zoom-in'></i>
+                    </a>
+                    <a class='btn btn-info' href='#'>
+                      <i class='icon-edit'></i>
+                    </a>
+                    <a class='btn btn-danger' href='#'>
+                      <i class='icon-trash'></i>
+                    </a>
+                  </td>
                 </tr>
               <?php }  ?>
             </tbody>
           </table>
+
+          <div class='panel-footer'>
+            <ul class='pagination pagination-sm'>
+              <li>
+                <a href='#'>«</a>
+              </li>
+              <li class='active'>
+                <a href='#'>1</a>
+              </li>
+              <li>
+                <a href='#'>2</a>
+              </li>
+              <li>
+                <a href='#'>3</a>
+              </li>
+              <li>
+                <a href='#'>4</a>
+              </li>
+              <li>
+                <a href='#'>5</a>
+              </li>
+              <li>
+                <a href='#'>6</a>
+              </li>
+              <li>
+                <a href='#'>7</a>
+              </li>
+              <li>
+                <a href='#'>8</a>
+              </li>
+              <li>
+                <a href='#'>»</a>
+              </li>
+            </ul>
+            <div class='pull-right'>
+              Showing 1 to 10 of 32 entries
+            </div>
+          </div>
         </div>
       </div>
     </div>
