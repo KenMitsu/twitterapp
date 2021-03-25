@@ -16,7 +16,7 @@
         <pre>
             <?php
                 echo 'ここまではきている';
-                require "/Users/mitsuishikenshirou/Desktop/PHP_samplefile/Twitter/twitteroauth-2.0.1/autoload.php";
+                require "/Users/mitsuishikenshirou/Desktop/PHP_samplefile/twitterapp/vendor/autoload.php";
                 use Abraham\TwitterOAuth\TwitterOAuth;
 
                 echo 'ここまではきている';
