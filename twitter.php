@@ -20,13 +20,16 @@ use Abraham\TwitterOAuth\TwitterOAuth;
         
             //検索ワードやパラメータを指定①
             $quary = 'ヨルシカ';
-    
-            $connection = new TwitterOAuth($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
-            var_dump($connection);
-            //$quaryの条件でツイートを検索
-            var_dump('4');
-            $statuses = $connection->get('search/tweets',['q' => $quary, 'count' => 5, 'tweet_mode' => 'extended']);
-            var_dump('5');
+
+            try{
+                $connection = new TwitterOAuth($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+                var_dump($connection);
+                //$quaryの条件でツイートを検索
+                $statuses = $connection->get('search/tweets',['q' => $quary, 'count' => 5, 'tweet_mode' => 'extended']);
+            }catch (TwitterOAuthException $e){
+                var_dump($e->getMessage());
+                var_dump($e->getTrace());
+            }
         
             if(isset($statuses->errors)) {
                 //取得失敗
@@ -39,7 +42,6 @@ use Abraham\TwitterOAuth\TwitterOAuth;
                 //取得成功②
                 foreach($statuses->statuses as $tweet){
                         echo '<p>';
-                        var_dump('aaa');
                         print_r('ステータスID: ' . $tweet->id . '<br>');
                         echo '名前: ' . $tweet->user->name . '<br>';
                         echo 'ユーザー名(screen_name): ' . $tweet->user->screen_name . '<br>';
