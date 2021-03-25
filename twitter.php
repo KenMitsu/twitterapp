@@ -18,6 +18,8 @@
                 require "/Users/mitsuishikenshirou/Desktop/PHP_samplefile/Twitter/twitteroauth-2.0.1/autoload.php";
                 use Abraham\TwitterOAuth\TwitterOAuth;
 
+                echo 'ここまではきている';
+                
                 //Twitter developersから取得した値を代入
                 //マーケ×エンジニア　SEO運用中アカウント
                 $consumerKey = 'VyVWxGFvvJRVUlID0Db0fDfQG';
