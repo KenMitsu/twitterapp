@@ -319,5 +319,36 @@ class Tweet
             } catch (PDOException $e) {
                 die($e->getMessage());
             }
-        }           
+        }
+    public function getTweetTest()
+        {
+            $quary = 'ヨルシカ';
+
+                $connection = new TwitterOAuth($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+                //$quaryの条件でツイートを検索
+                $statuses = $connection->get('search/tweets',['q' => $quary, 'count' => 5, 'tweet_mode' => 'extended']);
+
+                if(isset($statuses->errors)) {
+                    //取得失敗
+                    echo 'Error occurred. ';
+                    echo 'Error message: ' . $statuses->errors[0]->message;
+                } else {
+                    //検索結果がない場合はメッセージを表示
+                    if(count($statuses->statuses)==0)echo '該当するツイートはありませんでした。';
+
+                    //取得成功②
+                    foreach($statuses->statuses as $tweet){
+                            echo '<p>';
+                            echo 'ステータスID: ' . $tweet->id . '<br>';
+                            echo '名前: ' . $tweet->user->name . '<br>';
+                            echo 'ユーザー名(screen_name): ' . $tweet->user->screen_name . '<br>';
+                            echo 'ツイート本文: ' . $tweet->full_text . '<br>';
+                            echo '作成日: ' . date('Y-m-d H:i:s', strtotime($tweet->created_at)) . '<br>';
+                            echo 'ツイート: ' . $tweet->source . '<br>';
+                            echo 'リツイート数: ' . $tweet->retweet_count . '<br>';
+                            echo 'いいね数: ' . $tweet->favorite_count;
+                            echo '</p>';
+                    }
+                }
+        }
 }
