@@ -7,6 +7,8 @@
         {
             // TwitterOAuthを利用するためComposerのautoload.phpを読み込み
             require __DIR__ . '/vendor/autoload.php';
+            require "vendor/abraham/twitteroauth/autoload.php";
+
             // TwitterOAuthクラスをインポート
             use Abraham\TwitterOAuth\TwitterOAuth;
         
