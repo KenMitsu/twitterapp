@@ -24,8 +24,10 @@ use Abraham\TwitterOAuth\TwitterOAuth;
             //検索ワードやパラメータを指定①
             $quary = 'ヨルシカ';
             var_dump('3');
-        
+    
+            var_dump($connection);
             $connection = new TwitterOAuth($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
+            var_dump($connection);
             //$quaryの条件でツイートを検索
             var_dump('4');
             $statuses = $connection->get('search/tweets',['q' => $quary, 'count' => 5, 'tweet_mode' => 'extended']);
