@@ -5,9 +5,10 @@
 
     function getTweetTest()
         {
-            require "/Users/mitsuishikenshirou/Desktop/PHP_samplefile/twitterapp/vendor/autoload.php";
+            // TwitterOAuthを利用するためComposerのautoload.phpを読み込み
+            require __DIR__ . '/vendor/autoload.php';
+            // TwitterOAuthクラスをインポート
             use Abraham\TwitterOAuth\TwitterOAuth;
-        
         
             //Twitter developersから取得した値を代入
             //マーケ×エンジニア　SEO運用中アカウント
