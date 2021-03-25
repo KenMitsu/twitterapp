@@ -47,10 +47,8 @@ session_start();
         </li>
       </ul>
     </div>
+    
     <div id='wrapper'>
-
-
-
       <!-- Sidebar -->
       <section id='sidebar'>
         <i class='icon-align-justify icon-large' id='toggle'></i>

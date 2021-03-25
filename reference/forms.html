@@ -3,7 +3,7 @@
   <head>
     <meta charset='utf-8'>
     <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
-    <title>Forms</title>
+    <title>CINC Twitter System</title>
     <meta content='lab2023' name='author'>
     <meta content='' name='description'>
     <meta content='' name='keywords'>
@@ -14,117 +14,69 @@
   <body class='main page'>
     <!-- Navbar -->
     <div class='navbar navbar-default' id='navbar'>
-      <a class='navbar-brand' href='#'>
+      <a class='navbar-brand' href='./tables.phps'>
         <i class='icon-beer'></i>
-        Hierapolis
+        CINC Twitter System
       </a>
       <ul class='nav navbar-nav pull-right'>
-        <li class='dropdown'>
-          <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
-            <i class='icon-envelope'></i>
-            Messages
-            <span class='badge'>5</span>
-            <b class='caret'></b>
-          </a>
-          <ul class='dropdown-menu'>
-            <li>
-              <a href='#'>New message</a>
-            </li>
-            <li>
-              <a href='#'>Inbox</a>
-            </li>
-            <li>
-              <a href='#'>Out box</a>
-            </li>
-            <li>
-              <a href='#'>Trash</a>
-            </li>
-          </ul>
-        </li>
-        <li>
-          <a href='#'>
-            <i class='icon-cog'></i>
-            Settings
-          </a>
-        </li>
         <li class='dropdown user'>
           <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
             <i class='icon-user'></i>
-            <strong>John DOE</strong>
+            <strong>Log out page</strong>
             <img class="img-rounded" src="http://placehold.it/20x20/ccc/777" />
             <b class='caret'></b>
           </a>
           <ul class='dropdown-menu'>
-            <li>
-              <a href='#'>Edit Profile</a>
-            </li>
             <li class='divider'></li>
             <li>
-              <a href="logout.html">Sign out</a>
+              <a href="./logout.html">Log out</a>
             </li>
           </ul>
         </li>
       </ul>
     </div>
+
+
     <div id='wrapper'>
       <!-- Sidebar -->
       <section id='sidebar'>
         <i class='icon-align-justify icon-large' id='toggle'></i>
         <ul id='dock'>
-          <li class='launcher'>
-            <i class='icon-dashboard'></i>
-            <a href="dashboard.php">Dashboard</a>
-          </li>
-          <li class='active launcher'>
-            <i class='icon-file-text-alt'></i>
-            <a href="forms.html">Forms</a>
-          </li>
-          <li class='launcher'>
-            <i class='icon-table'></i>
-            <a href="tables.php">Tables</a>
-          </li>
           <li class='launcher dropdown hover'>
-            <i class='icon-flag'></i>
-            <a href='#'>Reports</a>
+            <i class='icon-table'></i>
+            <a href="./tables.php">Today's</a>
             <ul class='dropdown-menu'>
-              <li class='dropdown-header'>Launcher description</li>
+              <li class='dropdown-header'>Today's Ranking Best3</li>
               <li>
-                <a href='#'>Action</a>
+                <a href='./favorite_best3_today.php'>いいね数ランキング</a>
               </li>
               <li>
-                <a href='#'>Another action</a>
+                <a href='./rt_best3_today.php'>RT数ランキング</a>
               </li>
               <li>
-                <a href='#'>Something else here</a>
+                <a href='./followers_best3_today.php'>フォロワー数ランキング</a>
               </li>
             </ul>
           </li>
           <li class='launcher'>
-            <i class='icon-bookmark'></i>
-            <a href='#'>Bookmarks</a>
+            <i class='icon-dashboard'></i>
+            <a href="tables_all_rankings.php">All Rankings</a>
           </li>
           <li class='launcher'>
-            <i class='icon-cloud'></i>
-            <a href='#'>Backup</a>
-          </li>
-          <li class='launcher'>
-            <i class='icon-bug'></i>
-            <a href='#'>Feedback</a>
+            <i class='icon-file-text-alt'></i>
+            <a href="forms.html">Forms</a>
           </li>
         </ul>
-        <div data-toggle='tooltip' id='beaker' title='Made by lab2023'></div>
+        <div data-toggle='tooltip' id='beaker' title='Made by Mitsuishi'></div>
       </section>
       <!-- Tools -->
       <section id='tools'>
         <ul class='breadcrumb' id='breadcrumb'>
-          <li class='title'>Forms</li>
-          <li><a href="#">Lorem</a></li>
-          <li class='active'><a href="#">ipsum</a></li>
+          <li class='title'>Contact</li>
         </ul>
-        <div id='toolbar'>
-          
-        </div>
       </section>
+
+
       <!-- Content -->
       <div id='content'>
         <div class='panel panel-default'>
