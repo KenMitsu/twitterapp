@@ -240,7 +240,7 @@ class Tweet
                         $contents = $tweet->text;
                         $favorite_count = $tweet->favorite_count;
                         $retweet_count = $tweet->retweet_count;
-                        $tweeted_at = $this->getTimeMonth($tweet->created_at);
+                        $tweeted_at = $this->getTimeToday($tweet->created_at);
                         if(!($tweeted_at === "この時間にTweetはありませんでした")){
                             $date = date("Y-m-d", time());
                             $stmt_tweet->execute(array($name, $contents, $favorite_count, $retweet_count, $tweeted_at, $date, $user_id));
