@@ -260,8 +260,8 @@ class Tweet
     private function getUser()
         {
             try{
-                //$sql="SELECT account_id FROM userdata WHERE account_id != ''";
-                $sql="SELECT account_id FROM userdata where account_id = 'matouda1'";
+                $sql="SELECT account_id FROM userdata WHERE account_id != ''";
+                //$sql="SELECT account_id FROM userdata where account_id = 'matouda1'";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
