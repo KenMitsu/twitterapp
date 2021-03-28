@@ -3,9 +3,9 @@ require_once(__DIR__ . '/vendor/autoload.php');
 //ini_set('display_errors', 1);
 
 //消えた昔の DBH 
-define('DSN', 'pgsql:host=ec2-54-211-55-24.compute-1.amazonaws.com;dbname=db0gg9nfh4bcu6');
-define('USER', 'utmjoeacgsbrtj');
-define('PASS', 'af535ec75c89b18f78bf43b140f9dbc36bb83651f6c68d18802766184c85e384');
+//define('DSN', 'pgsql:host=ec2-54-211-55-24.compute-1.amazonaws.com;dbname=db0gg9nfh4bcu6');
+//define('USER', 'utmjoeacgsbrtj');
+//define('PASS', 'af535ec75c89b18f78bf43b140f9dbc36bb83651f6c68d18802766184c85e384');
 
 //cinctwitterapp 最新の DBH 
 define('DSN', 'pgsql:host=ec2-23-21-229-200.compute-1.amazonaws.com;dbname=db9s9flfhkkhds');
