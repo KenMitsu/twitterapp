@@ -190,8 +190,8 @@ class Tweet
             date_default_timezone_set('Asia/Tokyo');
 
             try{
-                $sql_user = 'INSERT INTO user_info (name, followers_count, following_count, posts_count, latest_time, user_id, date) VALUES (?, ?, ?, ?, ?, ?, ?)';
-                $sql_tweet = 'INSERT INTO tweet_info (name, contents, favorite_count, retweet_count, tweeted_at, date) VALUES (?, ?, ?, ?, ?, ?)';
+                $sql_user = 'INSERT INTO user_info (name, followers_count, following_count, posts_count, update_time, user_id, date) VALUES (?, ?, ?, ?, ?, ?, ?)';
+                $sql_tweet = 'INSERT INTO tweet_info (name, contents, favorite_count, retweet_count, tweeted_at, date, user_id) VALUES (?, ?, ?, ?, ?, ?)';
                 $stmt_user = $this->dbh->prepare($sql_user);
                 $stmt_tweet = $this->dbh->prepare($sql_tweet);
     
@@ -243,7 +243,7 @@ class Tweet
                         $tweeted_at = $this->getTimeToday($tweet->created_at);
                         if(!($tweeted_at === "この時間にTweetはありませんでした")){
                             $date = date("Y-m-d", time());
-                            $stmt_tweet->execute(array($name, $contents, $favorite_count, $retweet_count, $tweeted_at, $date));
+                            $stmt_tweet->execute(array($name, $contents, $favorite_count, $retweet_count, $tweeted_at, $date, $user_id));
                             $rows_tweet=$stmt_tweet->fetchAll(PDO::FETCH_ASSOC);
                             echo "：取得に成功しました".'<br />';
                         }else{
