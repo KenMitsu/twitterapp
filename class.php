@@ -191,7 +191,7 @@ class Tweet
 
             try{
                 $sql_user = 'INSERT INTO user_info (name, followers_count, following_count, posts_count, update_time, user_id, date) VALUES (?, ?, ?, ?, ?, ?, ?)';
-                $sql_tweet = 'INSERT INTO tweet_info (name, contents, favorite_count, retweet_count, tweeted_at, date, user_id) VALUES (?, ?, ?, ?, ?, ?)';
+                $sql_tweet = 'INSERT INTO tweet_info (name, contents, favorite_count, retweet_count, tweeted_at, date, user_id) VALUES (?, ?, ?, ?, ?, ?, ?)';
                 $stmt_user = $this->dbh->prepare($sql_user);
                 $stmt_tweet = $this->dbh->prepare($sql_tweet);
     
