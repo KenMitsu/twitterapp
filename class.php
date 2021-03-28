@@ -262,7 +262,7 @@ class Tweet
         {
             try{
                 //$sql="SELECT account_id FROM userdata WHERE account_id != ''";
-                $sql="SELECT account_id FROM userdata where account_id = 'koichiwatai'";
+                $sql="SELECT account_id FROM userdata where account_id = 'matouda1'";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
