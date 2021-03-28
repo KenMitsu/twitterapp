@@ -24,7 +24,7 @@ use Abraham\TwitterOAuth\TwitterOAuth;
             try{
                 $connection = new TwitterOAuth($consumerKey, $consumerSecret, $accessToken, $accessTokenSecret);
                 var_dump($connection);
-                //$quaryの条件でツイートを検索
+                //$quaryの条件で
                 $statuses = $connection->get('search/tweets',['q' => $quary, 'count' => 5, 'tweet_mode' => 'extended']);
             }catch (TwitterOAuthException $e){
                 var_dump($e->getMessage());
