@@ -54,7 +54,7 @@ class Tweet
     public function favorite_all_today()
         {
             try{
-                $sql="SELECT name, contents, favorite_count FROM tweet_info where date = CURRENT_DATE ORDER BY favorite_count desc";
+                $sql="SELECT name, contents, favorite_count FROM tweet_info where tweeted_at = CURRENT_DATE ORDER BY favorite_count desc";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
@@ -76,7 +76,7 @@ class Tweet
     public function favorite_best3_today()
         {
             try{
-                $sql="SELECT name, contents, favorite_count FROM tweet_info where date = CURRENT_DATE ORDER BY favorite_count desc limit 3";
+                $sql="SELECT name, contents, favorite_count FROM tweet_info where tweeted_at = CURRENT_DATE ORDER BY favorite_count desc limit 3";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
@@ -98,7 +98,7 @@ class Tweet
     public function rt_all_today()
         {
             try{
-                $sql="SELECT name, contents, retweet_count FROM tweet_info where date = CURRENT_DATE ORDER BY retweet_count desc";
+                $sql="SELECT name, contents, retweet_count FROM tweet_info where tweeted_at = CURRENT_DATE ORDER BY retweet_count desc";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
@@ -120,7 +120,7 @@ class Tweet
     public function rt_best3_today()
         {
             try{
-                $sql="SELECT name, contents, retweet_count FROM tweet_info where date = CURRENT_DATE ORDER BY retweet_count desc limit 3";
+                $sql="SELECT name, contents, retweet_count FROM tweet_info where tweeted_at = CURRENT_DATE ORDER BY retweet_count desc limit 3";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
@@ -142,7 +142,7 @@ class Tweet
     public function followers_all_today()
         {
             try{
-                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info where date = CURRENT_DATE ORDER BY followers_count desc";
+                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info where tweeted_at = CURRENT_DATE ORDER BY followers_count desc";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
@@ -164,7 +164,7 @@ class Tweet
     public function followers_best3_today()
         {
             try{
-                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info where date = CURRENT_DATE ORDER BY followers_count desc limit 3";
+                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info where tweeted_at = CURRENT_DATE ORDER BY followers_count desc limit 3";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
