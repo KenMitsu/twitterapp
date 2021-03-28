@@ -184,7 +184,7 @@ class Tweet
                 die($e->getMessage());
             }
         }
-    public function getTweet($number_of_tweet, $account_IDs)
+    public function getTweet($number_of_tweet)
         {
             //print_r('getTweetにきてはいるよ'."<br/>");    
             date_default_timezone_set('Asia/Tokyo');
@@ -208,7 +208,7 @@ class Tweet
             );
             //print_r($connection).'<br />';
             //print_r('Twitter取得はできているよ'."<br/>");
-            //$account_IDs = $this->getUser();
+            $account_IDs = $this->getUser();
             while($account_id = $account_IDs->fetch(PDO::FETCH_ASSOC)){
                 $statuses = $connection->get('statuses/user_timeline',
                     array(
@@ -261,7 +261,8 @@ class Tweet
     private function getUser()
         {
             try{
-                $sql="SELECT account_id FROM userdata WHERE account_id != ''";
+                //$sql="SELECT account_id FROM userdata WHERE account_id != ''";
+                $sql="SELECT account_id FROM userdata where account_id = 'koichiwatai'";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
