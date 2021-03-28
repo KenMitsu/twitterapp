@@ -240,10 +240,9 @@ class Tweet
                         $contents = $tweet->text;
                         $favorite_count = $tweet->favorite_count;
                         $retweet_count = $tweet->retweet_count;
-                        $tweeted_at = $this->getTimeToday($tweet->created_at);
+                        $tweeted_at = $this->getTime2weeks($tweet->created_at);
                         if(!($tweeted_at === "この時間にTweetはありませんでした")){
-                            $date = date("Y-m-d", time());
-                            $stmt_tweet->execute(array($name, $contents, $favorite_count, $retweet_count, $tweeted_at, $date, $user_id));
+                            $stmt_tweet->execute(array($name, $contents, $favorite_count, $retweet_count, $tweeted_at, $tweeted_at, $user_id));
                             $rows_tweet=$stmt_tweet->fetchAll(PDO::FETCH_ASSOC);
                             echo "：取得に成功しました".'<br />';
                         }else{
@@ -300,10 +299,10 @@ class Tweet
                 return "この時間にTweetはありませんでした";
             }
         }
-    private function getTimeMonth($t) //Tue Feb 02 20:46:21 +0000 2021
+    private function getTime2weeks($t) //Tue Feb 02 20:46:21 +0000 2021
         {
             date_default_timezone_set('Asia/Tokyo');
-            $month_ago = strtotime("last Month");
+            $month_ago = strtotime("2 weeks ago");
             $today = strtotime(date("Y/m/d 00:00:00"));
             $tomorrow = strtotime("+1 day", $today);
             
