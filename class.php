@@ -240,7 +240,7 @@ class Tweet
                         $contents = $tweet->text;
                         $favorite_count = $tweet->favorite_count;
                         $retweet_count = $tweet->retweet_count;
-                        $tweeted_at = $this->getTimeToday($tweet->created_at);
+                        $tweeted_at = $this->getTimeMonth($tweet->created_at);
                         if(!($tweeted_at === "この時間にTweetはありませんでした")){
                             $date = date("Y-m-d", time());
                             $stmt_tweet->execute(array($name, $contents, $favorite_count, $retweet_count, $tweeted_at, $date, $user_id));
@@ -294,6 +294,21 @@ class Tweet
             $timestamp = strtotime($t);//1612298781
             $jp_time = date('Y-m-d H:i:s', $timestamp);//形を戻す　2021-02-03 05:46:21
             if($today < $timestamp && $timestamp < $tomorrow){
+                return $jp_time;
+            }else{
+                return "この時間にTweetはありませんでした";
+            }
+        }
+    private function getTimeMonth($t) //Tue Feb 02 20:46:21 +0000 2021
+        {
+            date_default_timezone_set('Asia/Tokyo');
+            $month_ago = strtotime("last Month");
+            $today = strtotime(date("Y/m/d 00:00:00"));
+            $tomorrow = strtotime("+1 day", $today);
+            
+            $timestamp = strtotime($t);//1612298781
+            $jp_time = date('Y-m-d H:i:s', $timestamp);//形を戻す　2021-02-03 05:46:21
+            if($month_ago < $timestamp && $timestamp < $tomorrow){
                 return $jp_time;
             }else{
                 return "この時間にTweetはありませんでした";
