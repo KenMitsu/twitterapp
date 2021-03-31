@@ -39,8 +39,7 @@ ini_set('display_errors', 0);
             <legend>Account Registration</legend>　<!--<LEGEND>～</LEGEND>で入力項目グループにタイトルをつける-->
             <div class='form-group'>
                 <?php
-                    $url = 'https://cinctwitterapp.herokuapp.com/reference/login.html';
-                    $server_ip = file_get_contents($url);
+                    $server_ip = '10.30.238.92';
                     $access_ip = $_SERVER['REMOTE_ADDR'];
                     echo $server_ip;
                     echo $access_ip;
