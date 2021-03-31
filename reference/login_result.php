@@ -40,13 +40,15 @@ ini_set('display_errors', 0);
             <div class='form-group'>
                 <?php
                     //ip確認
+                    /*
                     $matchFlag = ipRestriction();
                     if (!$matchFlag){
                       http_response_code( 301 ) ;
                       header( "Location: ./404.html" ) ;
                       exit ;
                     }
-
+                    */
+                    
                     //DB内でPOSTされたメールアドレスを検索
                     $dbh = new Database();
                     $pdo = $dbh->getDBH();
