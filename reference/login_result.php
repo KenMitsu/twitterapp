@@ -166,5 +166,6 @@ ini_set('display_errors', 0);
               return $matchFlag;
             }
           }
+        return $matchFlag;
     }
 ?>
