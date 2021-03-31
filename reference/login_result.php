@@ -92,6 +92,9 @@ ini_set('display_errors', 0);
 
                         // 一致が無ければIP制限
                         if (!$matchFlag) {
+                          echo $thisIpNum.'<br>';
+                          echo $maskNum.'<br>';
+                          echo $allowIpNum.'<br>';
                           echo 'ipアドレスが一致しません';
                         }
 
