@@ -46,7 +46,7 @@ ini_set('display_errors', 0);
                       header( "Location: ./404.html" ) ;
                       exit ;
                     }
-                    
+
                     //DB内でPOSTされたメールアドレスを検索
                     $dbh = new Database();
                     $pdo = $dbh->getDBH();
@@ -123,6 +123,7 @@ ini_set('display_errors', 0);
           
           // リモートIP取得
           $thisIp = $_SERVER['REMOTE_ADDR'];
+          echo $thisIp;
           
           // リモートIPをドットで区切る
           $thisIpNums = explode('.', $thisIp);
