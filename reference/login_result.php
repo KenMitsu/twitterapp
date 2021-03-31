@@ -42,10 +42,10 @@ ini_set('display_errors', 0);
                     $url = 'https://cinctwitterapp.herokuapp.com/reference/login.html';
                     $server_ip = file_get_contents($url);
                     $access_ip = $_SERVER['REMOTE_ADDR'];
-                     
+                    echo $server_ip;
+                    echo $access_ip;
+
                     if ( $server_ip != $access_ip ) {
-                      echo $server_ip;
-                      echo $access_ip;
                       echo 'IPが許可されていません';
                       return;
                     }
