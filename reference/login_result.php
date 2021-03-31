@@ -44,6 +44,8 @@ ini_set('display_errors', 0);
                     $access_ip = $_SERVER['REMOTE_ADDR'];
                      
                     if ( $server_ip != $access_ip ) {
+                      echo $server_ip;
+                      echo $access_ip;
                       echo 'IPが許可されていません';
                       return;
                     }
