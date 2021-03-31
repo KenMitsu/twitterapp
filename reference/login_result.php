@@ -87,7 +87,7 @@ ini_set('display_errors', 0);
                             }
                           }
                           //ip確認
-                            if (!$matchFlag){
+                            if ($matchFlag){
                               http_response_code( 301 ) ;
                               header( "Location: ./404.html" ) ;
                               exit ;
