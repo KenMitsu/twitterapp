@@ -39,16 +39,60 @@ ini_set('display_errors', 0);
             <legend>Account Registration</legend>　<!--<LEGEND>～</LEGEND>で入力項目グループにタイトルをつける-->
             <div class='form-group'>
                 <?php
-                    //ip確認
-                    /*
-                    $matchFlag = ipRestriction();
-                    if (!$matchFlag){
-                      http_response_code( 301 ) ;
-                      header( "Location: ./404.html" ) ;
-                      exit ;
-                    }
-                    */
-                    
+                          // 許可IPリスト
+                          $allowIpList = array(
+                            '113.33.153.182',
+                          );
+                          
+                          // リモートIP取得
+                          $thisIp = $_SERVER['REMOTE_ADDR'];
+                          echo $thisIp;
+                          
+                          // リモートIPをドットで区切る
+                          $thisIpNums = explode('.', $thisIp);
+                          
+                          // リモートIPを10進数値に変更
+                          $thisIpNum = isset($thisIpNums[3]) ? (
+                            $thisIpNums[0] * pow(2,24)
+                            + $thisIpNums[1] * pow(2,16)
+                            + $thisIpNums[2] * pow(2,8)
+                            + $thisIpNums[3] * pow(2,0)
+                            ) : 0;
+                          
+                          // 許可IPリストとのマッチ検索開始
+                          $matchFlag = false;
+                          foreach ($allowIpList as $allowIp) {
+                            // 許可IPをスラッシュで区切る
+                            $allowIpArray = explode('/', $allowIp);
+
+                            // 許可IPをドットで区切る
+                            $allowIpNums = explode('.', $allowIpArray[0]);
+
+                            // 許可IPを10進数値に変更
+                            $allowIpNum = isset($allowIpNums[3]) ? (
+                              $allowIpNums[0] * pow(2,24)
+                              + $allowIpNums[1] * pow(2,16)
+                              + $allowIpNums[2] * pow(2,8)
+                              + $allowIpNums[3] * pow(2,0)
+                              ) : 0;
+
+                            // 許可IPのマスクを数値に変更
+                            $maskNum = isset($allowIpArray[1])  
+                              ? (pow(2,(int)$allowIpArray[1]) - 1) * pow(2, 32 - (int)$allowIpArray[1])
+                              : pow(2, 32) - 1;
+
+                            // リモートIPと許可IPの一致を確認
+                            if (($thisIpNum & $maskNum) === ($allowIpNum & $maskNum)) {
+                              $matchFlag = true;
+                            }
+                          }
+                          //ip確認
+                            if (!$matchFlag){
+                              http_response_code( 301 ) ;
+                              header( "Location: ./404.html" ) ;
+                              exit ;
+                            }
+
                     //DB内でPOSTされたメールアドレスを検索
                     $dbh = new Database();
                     $pdo = $dbh->getDBH();
