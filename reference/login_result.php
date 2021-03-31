@@ -42,6 +42,7 @@ ini_set('display_errors', 0);
                           // 許可IPリスト
                           $allowIpList = array(
                             '113.33.153.182',
+                            '10.9.251.250'
                           );
                           
                           // リモートIP取得
@@ -87,7 +88,7 @@ ini_set('display_errors', 0);
                             }
                           }
                           //ip確認
-                            if ($matchFlag){
+                            if (!$matchFlag){
                               http_response_code( 301 ) ;
                               header( "Location: ./404.html" ) ;
                               exit ;
