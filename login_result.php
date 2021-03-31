@@ -18,7 +18,7 @@ ini_set('display_errors', 0);
    <h2>Login</h2><br>
 
     <?php
-    //DB内でPOSTされたメールアドレスを検索
+        //DB内でPOSTされたメールアドレスを検索
         $pdo = new Database();
         $dbh = $pdo->getDBH();
         $stmt = $dbh->prepare('select * from userdata where username = ?');
