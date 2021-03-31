@@ -39,9 +39,9 @@ ini_set('display_errors', 0);
             <legend>Account Registration</legend>　<!--<LEGEND>～</LEGEND>で入力項目グループにタイトルをつける-->
             <div class='form-group'>
                 <?php
-                    $server_ip = '10.30.238.92';
+                    $server_ip = '10.9.234.244';
                     $access_ip = $_SERVER['REMOTE_ADDR'];
-                    echo $server_ip;
+                    echo $server_ip.'<br>';
                     echo $access_ip;
 
                     if ( $server_ip != $access_ip ) {
