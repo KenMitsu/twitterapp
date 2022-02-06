@@ -1,5 +1,5 @@
 FROM php:7.2-apache
-MAINTAINER kenshiro <km3zch1058@gmail.com>
+LABEL maintainer kenshiro <km3zch1058@gmail.com>
 
 RUN apt-get update
 RUN apt-get install -y vim
