@@ -19,9 +19,10 @@ class Database
         }
 }
 
+
 class Tweet
 {
-    public function __construct()
+    public function __construct() //newした時に実行される
         {
             $db = new Database;
             $this->dbh = $db->getDBH(); //なぜここでthisが出てくるのだろうか。上で呼び出したとしてもDatabaseクラスにはdbhは定義していない
@@ -39,23 +40,84 @@ class Tweet
                 die($e->getMessage());
               }
         }
-    
-    public function favoriteRanking()
+    public function favorite_all()
         {
             try{
-                $sql="SELECT name, contents, favorite_count FROM tweet_info where date = CURRENT_DATE ORDER BY favorite_count desc limit 3";
+                $sql="SELECT name, contents, favorite_count FROM tweet_info ORDER BY favorite_count desc";
                 $stmt = $this->dbh->prepare($sql);
-                //$stmt->bindValue(':date', date("Y-m-d", strtotime($date)), PDO::PARAM_STR);
-                //$stmt->bindValue(':num', $num);
                 $stmt->execute([]);  
-                var_dump($stmt);
                 return $stmt;
               }catch(PDOException $e){
                 die($e->getMessage());
             }
         }
-
-    public function retweetRanking()
+    public function favorite_all_today()
+        {
+            try{
+                $sql="SELECT name, contents, favorite_count FROM tweet_info where date = CURRENT_DATE ORDER BY favorite_count desc";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function favorite_best3()
+        {
+            try{
+                $sql="SELECT name, contents, favorite_count FROM tweet_info ORDER BY favorite_count desc limit 3";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function favorite_best3_today()
+        {
+            try{
+                $sql="SELECT name, contents, favorite_count FROM tweet_info where date = CURRENT_DATE ORDER BY favorite_count desc limit 3";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function rt_all()
+        {
+            try{
+                $sql="SELECT name, contents, retweet_count FROM tweet_info ORDER BY retweet_count desc";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function rt_all_today()
+        {
+            try{
+                $sql="SELECT name, contents, retweet_count FROM tweet_info where date = CURRENT_DATE ORDER BY retweet_count desc";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function rt_best3()
+        {
+            try{
+                $sql="SELECT name, contents, retweet_count FROM tweet_info ORDER BY retweet_count desc limit 3";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function rt_best3_today()
         {
             try{
                 $sql="SELECT name, contents, retweet_count FROM tweet_info where date = CURRENT_DATE ORDER BY retweet_count desc limit 3";
@@ -66,10 +128,10 @@ class Tweet
                 die($e->getMessage());
             }
         }
-    public function followerRanking()
+    public function followers_all()
         {
             try{
-                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info where date = CURRENT_DATE ORDER BY followers_count desc limit 3";
+                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info ORDER BY followers_count desc";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
@@ -77,13 +139,34 @@ class Tweet
                 die($e->getMessage());
             }
         }
-    public function todaysTweet()
+    public function followers_all_today()
         {
             try{
-                $sql="SELECT name, contents, favorite_count FROM tweet_info where date = CURRENT_DATE ORDER BY favorite_count desc";
+                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info where date = CURRENT_DATE ORDER BY followers_count desc";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
-                var_dump($stmt);
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function followers_best3()
+        {
+            try{
+                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info ORDER BY followers_count desc limit 3";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
+                return $stmt;
+              }catch(PDOException $e){
+                die($e->getMessage());
+            }
+        }
+    public function followers_best3_today()
+        {
+            try{
+                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info where date = CURRENT_DATE ORDER BY followers_count desc limit 3";
+                $stmt = $this->dbh->prepare($sql);
+                $stmt->execute([]);  
                 return $stmt;
               }catch(PDOException $e){
                 die($e->getMessage());
