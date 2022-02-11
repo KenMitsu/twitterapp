@@ -5,17 +5,16 @@ require_once('./sidebar.html');
 require_once('./footer.html');
 session_start();
 
-    $tweet = new Tweet();
-    $favoriteRanking = $tweet->favoriteRanking();
-    $todaysTweet = $tweet->todaysTweet();
-    $retweetRanking = $tweet->retweetRanking();
-  
+  $tweet = new Tweet();
+  $favoriteRanking = $tweet->favoriteRanking();
+  $retweetRanking = $tweet->retweetRanking();
+  $followerRanking = $tweet->followerRanking();
 ?>
 
 <!DOCTYPE html>
 <html class='no-js' lang='en'>
   <body class='main page'>
-    <!-- Navbar -->
+    <!-- header.php -->
     <div id='wrapper'>
       <!-- Sidebar -->
       <!-- Content -->
@@ -23,7 +22,7 @@ session_start();
         <div class='panel panel-default grid'>
           <div class='panel-heading'>
             <i class='icon-table icon-large'></i>
-            本日のいいね数ランキング Best3
+            今までのいいね数ランキング Best3
           </div>
           <div class='panel-body'>
             <table class='table table-bordered'>
@@ -52,7 +51,7 @@ session_start();
         <div class='panel panel-default grid'>
           <div class='panel-heading'>
             <i class='icon-table icon-large'></i>
-            本日のRT数ランキング Best3
+            今までのRT数ランキング Best3
           </div>
           <div class='panel-body'>
             <table class='table table-bordered'>
@@ -81,41 +80,32 @@ session_start();
         <div class='panel panel-default grid'>
           <div class='panel-heading'>
             <i class='icon-table icon-large'></i>
-            本日のツイート一覧
-            <div class='panel-tools'>
-              <div class='btn-group'>
-                <a class='btn' data-toggle='toolbar-tooltip' href='./tables.php' title='Reload'>
-                  <i class='icon-refresh'></i>
-                </a>
-              </div>
-            </div>
+            現在のフォロワー数ランキング Best3
           </div>
-          <table class='table'>
-            <thead>
-              <tr>
-                <th>No</th>
-                <th>Name</th>
-                <th>Tweet</th>
-                <th>いいね数</th>
-                <th class='actions'>Twitterへ</th>
-              </tr>
-            </thead>
-            <tbody>
-              <?php $i=1; while($rows = $todaysTweet->fetch(PDO::FETCH_ASSOC)){?>
-                <tr class='table'>
-                  <td width="5%"><?= $i; $i++;?></td>
-                  <td width=20%"><?=htmlspecialchars($rows['name'])?></td>
-                  <td width="65%"><?=htmlspecialchars($rows['contents'])?></td>
-                  <td width="5%"><?=htmlspecialchars($rows['favorite_count'])?></td>
-                  <td width="5%" class='action'>
-                    <a class='btn btn-success' data-toggle='tooltip' href='#' title='Zoom'>
-                      <i class='icon-zoom-in'></i>
-                    </a>
-                  </td>
+          <div class='panel-body'>
+            <table class='table table-bordered'>
+              <thead>
+                <tr>
+                  <th>No</th>
+                  <th>Name</th>
+                  <th>フォロワー数</th>
+                  <th>フォロー数</th>
+                  <th>投稿数</th>
                 </tr>
-              <?php }  ?>
-            </tbody>
-          </table>
+              </thead>
+              <tbody>
+                <?php $i=1; while($rows = $followerRanking->fetch(PDO::FETCH_ASSOC)){?>
+                  <tr class='table'>
+                    <td width="5%"><?= $i; $i++;?></td>
+                    <td width="35%"><?=htmlspecialchars($rows['name'])?></td>
+                    <td width="20%"><?=htmlspecialchars($rows['followers_count'])?></td>
+                    <td width="20%"><?=htmlspecialchars($rows['following_count'])?></td>
+                    <td width="20%"><?=htmlspecialchars($rows['posts_count'])?></td>
+                  </tr>
+                <?php }  ?>
+              </tbody>
+            </table>
+          </div>
         </div>
       </div>
     </div>
