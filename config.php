@@ -13,17 +13,17 @@ define('USER', 'eqrkfxfxalybfu');
 define('PASS', '17e8e7922c958fa03954a9dc45b9e0e40eb755bc8d2fd91c2851ab0138fc9d2d');
 
 //KenshiroBOTアカウント
-/*
-define('CONSUMER_KEY', 'nEd5g78s60OnBcTABcyxx9S9Q');
-define('CONSUMER_SECRET', 'u6jDTga4ZdjhK9aDgwjIQkVyuAVtv7k9NC87c8ZW4qI55cZic5');
-define('ACCESS_TOKEN', '1349430242809532418-y3epPrbsatsypqx4khCA0vCXvz1HJy');
-define('ACCESS_TOKEN_SECRET', 'D4UzYhP5SeoL8M02ClmSZjD7RcFEsCUOcgTKFyX5qRda2');
-*/
+define('CONSUMER_KEY', 'Ub9tfamsJZumyBAEyVnrGk61l');
+define('CONSUMER_SECRET', 'XVc1jQkKmARwVcY5HbNbrtAcGo9UKnz7iAXj97JwHW4aV16dW5');
+define('ACCESS_TOKEN', '1349430242809532418-GGb3DiaVPzF0TjESnNhgr3I22A9dlr');
+define('ACCESS_TOKEN_SECRET', 'HBAatxihia3ZAI0rV9IGymsC6uHVBRFyo8CqJejDDRvFC');
+
 
 //SEO運用アカウント
+/*
 define('CONSUMER_KEY', 'VyVWxGFvvJRVUlID0Db0fDfQG');
 define('CONSUMER_SECRET', 'QspA5uKltPv9Pm69sVQ6Ja0TChkuWE2a3qfw5CwD4lv7qUiAB0');
 define('ACCESS_TOKEN', '1026662805221437441-HbhCerssmsLCUyiL6bTu941hrYw2hZ');
 define('ACCESS_TOKEN_SECRET', 'F5uGgjMh4cGr6lldshARLtcnAMEdocBtXpHQSvG8LWaIp');
-
+*/
 ?>

@@ -54,7 +54,7 @@ require_once('../class.php');
                       print <<<EOH
                       <br><br>
                       <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">登録画面に戻る</button>
-                    EOH;
+EOH;
                       return false;
                     }
 
@@ -69,14 +69,14 @@ require_once('../class.php');
                       <br>
                       <br>
                       <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">ログインページに移動する</button>
-                    EOH;
+EOH;
                     } catch (\Exception $e) {
                       echo 'このEmail addressはすでに使われています'. "<br/>";
                       print <<<EOH
                       <br>
                       <br>
                       <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">登録画面に戻る</button>
-                    EOH;
+EOH;
                     } 
                     ?>
 

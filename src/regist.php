@@ -41,18 +41,27 @@
               <div class='text-center'>
                 <div>
                   <label>
-                    <p>パスワードは半角英数字をそれぞれ1文字以上を含む、合計8文字以上で設定してください。</p>
+                    <p>半角英数字をそれぞれ1文字以上含む、合計8文字以上で設定してください。</p>
+                    <p>▼以下　登録は任意</p>
                   </label>
                 </div>
                 <div class='form-group'>
-                  <input class='form-control' id="account_id" placeholder='twitter_account_id' type='text' name="account_id" autocorrect="off" autocapitalize="off">
+                  <input class='form-control' id="account_id" placeholder='twitter_account_id（＠以降の文字列）' type='text' name="account_id" autocorrect="off" autocapitalize="off">
                 </div>
-                <div>
-                  <label>
-                    <p>twitter account：＠の後ろの文字列。登録でランキングに参戦可能。</p>
-                    <p>※登録は任意</p>
-                  </label>
+                <div class='form-group'>
+                  <input class='form-control' id="api_key" placeholder='API Key' type='password' name="api_key" autocorrect="off" autocapitalize="off">
                 </div>
+                <div class='form-group'>
+                  <input class='form-control' id="api_key_secret" placeholder='API Key Secret' type='password' name="api_key_secret" autocorrect="off" autocapitalize="off">
+                </div>
+                <div class='form-group'>
+                  <input class='form-control' id="access_token" placeholder='Access Token' type='password' name="access_token" autocorrect="off" autocapitalize="off">
+                </div>
+                <div class='form-group'>
+                  <input class='form-control' id="access_token_secret" placeholder='Access Token Secre' type='password' name="access_token_secret" autocorrect="off" autocapitalize="off">
+                </div>
+                <a href="https://blog.palettecms.jp/article/20103" target="_blank" rel="noopener noreferrer">各種Keyの取得手順</a>
+                <br><br>
                 <button type="submit"class="btn btn-default">Sign Up</button>
                 <br><br>
                 <a href="login.html">ログイン画面へ戻る</a>

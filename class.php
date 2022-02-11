@@ -251,4 +251,44 @@ class Tweet
                 die($e->getMessage());
             }
         }
+
+    public function autoLike()
+        {
+            date_default_timezone_set('Asia/Tokyo');
+            $connection = new TwitterOAuth(
+                CONSUMER_KEY, 
+                CONSUMER_SECRET, 
+                ACCESS_TOKEN, 
+                ACCESS_TOKEN_SECRET
+            );
+
+            // ツイートの検索
+            $statuses = $connection->get(
+                'search/tweets', 
+                array(
+                    'q'                 => 'プログラミング',   // 検索キーワード
+                    'count'             => '5',              // ツイート件数
+                    'lang'              => 'ja',             // 言語
+                    'locale'            => 'ja',             // 地域
+                    'result_type'       => 'recent',         // ツイートの種類 recent(最新) popular(人気) mixed(全て)
+                    'include_entities'  => 'false'           // entitiesプロパティを含めるかどうか
+                )
+            );
+            
+            if(isset($statuses->errors)){
+                echo 'Error occurred.'.PHP_EOL;
+                echo 'Error message:'.$statuses->errors[0]->message.PHP_EOL;
+            }else{
+                // いいねの発動
+                foreach($statuses->statuses as $tweet){
+                    $result = $connection->post(
+                        'favorites/create', 
+                        array(
+                            'id' => $tweet->id
+                        )
+                    );
+                }
+                echo "いいね付与に成功しました".'<br />';
+            }
+        }
 }
