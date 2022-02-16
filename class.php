@@ -41,9 +41,9 @@ class Tweet
         }
     
     public function favoriteRanking()
-        {
+        { //where date = CURRENT_DATE
             try{
-                $sql="SELECT name, contents, favorite_count FROM tweet_info where date = CURRENT_DATE ORDER BY favorite_count desc limit 3";
+                $sql="SELECT name, contents, favorite_count FROM tweet_info  ORDER BY favorite_count desc limit 3";
                 $stmt = $this->dbh->prepare($sql);
                 //$stmt->bindValue(':date', date("Y-m-d", strtotime($date)), PDO::PARAM_STR);
                 //$stmt->bindValue(':num', $num);
@@ -56,9 +56,9 @@ class Tweet
         }
 
     public function retweetRanking()
-        {
+        {//where date = CURRENT_DATE
             try{
-                $sql="SELECT name, contents, retweet_count FROM tweet_info where date = CURRENT_DATE ORDER BY retweet_count desc limit 3";
+                $sql="SELECT name, contents, retweet_count FROM tweet_info  ORDER BY retweet_count desc limit 3";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
@@ -67,9 +67,9 @@ class Tweet
             }
         }
     public function followerRanking()
-        {
+        { //where date = CURRENT_DATE
             try{
-                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info where date = CURRENT_DATE ORDER BY followers_count desc limit 3";
+                $sql="SELECT name, followers_count, following_count, posts_count FROM user_info ORDER BY followers_count desc limit 3";
                 $stmt = $this->dbh->prepare($sql);
                 $stmt->execute([]);  
                 return $stmt;
