@@ -28,7 +28,7 @@ ini_set('display_errors', 0);
               <div class='logo-icon'>
                 <i class='icon-beer'></i>
               </div>
-              CINC Twitter System
+              Twitter System
             </h1>
           </div>
         </div>

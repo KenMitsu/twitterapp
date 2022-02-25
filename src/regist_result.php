@@ -26,7 +26,7 @@ require_once('../class.php');
               <div class='logo-icon'>
                 <i class='icon-beer'></i>
               </div>
-              CINC Twitter System
+              Twitter System
             </h1>
           </div>
         </div>

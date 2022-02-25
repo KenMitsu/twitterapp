@@ -28,7 +28,7 @@ session_start();
     <div class='navbar navbar-default' id='navbar'>
       <a class='navbar-brand' href='#'>
         <i class='icon-beer'></i>
-        CINC　Twitter　System
+        Twitter System
       </a>
       <ul class='nav navbar-nav pull-right'>
         <li class='dropdown'>
