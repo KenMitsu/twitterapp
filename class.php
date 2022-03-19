@@ -2,7 +2,6 @@
 session_start();
 require_once(__DIR__ . '/config.php');
 use Abraham\TwitterOAuth\TwitterOAuth;
-
 class Database
 {
     public function getDBH()
@@ -231,6 +230,14 @@ class Tweet
                 return "この時間にTweetはありませんでした";
             }
         }
+
+    public function getCurrentTime() //Tue Feb 02 20:46:21 +0000 2021
+        {
+            date_default_timezone_set('Asia/Tokyo');
+            $now = date('Y-m-d H:i:s'); //2021-02-03 05:46:21
+            return $now;
+        }
+
     public function redaction($table_name, $column)
         {
             try {
