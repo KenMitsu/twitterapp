@@ -12,7 +12,7 @@ session_start();
   <head>
     <meta charset='utf-8'>
     <meta content='IE=edge,chrome=1' http-equiv='X-UA-Compatible'>
-    <title>CINC Twitter System</title>
+    <title>Twitter System</title>
     <meta content='lab2023' name='author'>
     <meta content='' name='description'>
     <meta content='' name='keywords'>
@@ -28,7 +28,7 @@ session_start();
     <div class='navbar navbar-default' id='navbar'>
       <a class='navbar-brand' href='./tables.php'>
         <i class='icon-beer'></i>
-        CINC Twitter System
+        Twitter System
       </a>
       <ul class='nav navbar-nav pull-right'>
         <li class='dropdown user'>
