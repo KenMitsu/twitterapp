@@ -41,7 +41,7 @@ session_start();
           <ul class='dropdown-menu'>
             <li class='divider'></li>
             <li>
-              <a href="./logout.html">Log out</a>
+              <a href="./logout.php">Log out</a>
             </li>
           </ul>
         </li>

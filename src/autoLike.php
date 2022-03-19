@@ -1,6 +1,6 @@
 <?php
 require_once('../class.php');
-require_once('./header.html');
+require_once('./header.php');
 require_once('./sidebar.html');
 require_once('./footer.html');
 session_start();

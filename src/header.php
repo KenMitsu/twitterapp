@@ -1,3 +1,8 @@
+<?php
+$username = $_SESSION['USERNAME'] ?? 'ログインなし';
+$nickname = $_SESSION['NICKNAME'] ?? 'ログインなし';
+?>
+
 <!DOCTYPE html>
 <html class='no-js' lang='en'>
   <head>
@@ -58,7 +63,7 @@
         <li class='dropdown user'>
           <a class='dropdown-toggle' data-toggle='dropdown' href='#'>
             <i class='icon-user'></i>
-            <strong>Kenshiro</strong>
+            <strong><?php echo $nickname?></strong>
             <img class="img-rounded" src="http://placehold.it/20x20/ccc/777" />
             <b class='caret'></b>
           </a>
@@ -68,7 +73,7 @@
             </li>
             <li class='divider'></li>
             <li>
-              <a href="./logout.html">Log out</a>
+              <a href="./logout.php">Log out</a>
             </li>
           </ul>
         </li>

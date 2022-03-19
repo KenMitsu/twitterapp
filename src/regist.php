@@ -38,6 +38,9 @@
               <div class='form-group'>
                 <input class='form-control' id="password" placeholder='password' type='password' name="password" autocorrect="off" autocapitalize="off">
               </div>
+              <div class='form-group'>
+                <input class='form-control' id="nickname" placeholder='nickname' type='text' name="nickname" autocorrect="off" autocapitalize="off">
+              </div>
               <div class='text-center'>
                 <div>
                   <label>

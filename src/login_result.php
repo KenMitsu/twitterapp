@@ -1,7 +1,6 @@
 <?php
 require_once('../config.php');
 require_once('../class.php');
-session_start();
 ini_set('display_errors', 0);
 ?>
 
@@ -61,6 +60,7 @@ EOH;
                     if (password_verify($_POST['password'], $row['password'])) {
                       session_regenerate_id(true); //session_idを新しく生成し、置き換える
                       $_SESSION['USERNAME'] = $row['username'];
+                      $_SESSION['NICKNAME'] = $row['nickname'];
                       echo "Welcome!";
                       echo '<br>';
                       print <<<EOH

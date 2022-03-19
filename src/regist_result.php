@@ -44,7 +44,13 @@ require_once('../class.php');
 
                     //POSTのValidate
                     $username = $_POST['username'];
+                    $nickname = $_POST['nickname'];
                     $account_id = $_POST['account_id'];
+                    $api_key = $_POST['api_key'];
+                    $api_key_secret = $_POST['api_key_secret'];
+                    $access_token = $_POST['access_token'];
+                    $access_token_secret = $_POST['access_token_secret'];
+
 
                     //パスワードの正規表現
                     if (preg_match('/\A(?=.*?[a-z])(?=.*?\d)[!-~]{8,100}+\z/i', $_POST['password'])) {//'/\A(?=.*?[a-z])(?=.*?\d)[a-z\d]{8,100}+\z/i'
@@ -60,18 +66,32 @@ EOH;
 
                     //登録処理
                     try {
-                      $stmt = $pdo->prepare("insert into userdata(username, password, account_id) values(?, ?, ?)");
-                      $stmt->execute([$username, $password, $account_id]);
-                      echo '登録完了!';
-                      print <<<EOH
-                      <br>
-                      下のボタンをクリックしてください。
-                      <br>
-                      <br>
-                      <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">ログインページに移動する</button>
+                      $email_sql = "SELECT * FROM userdata WHERE username = :username";
+                      $stmt = $pdo->prepare($email_sql);
+                      $stmt->bindValue(':username', $username);
+                      $stmt->execute();
+                      $col = $stmt->fetch();
+                      if ($col['username'] === $username) {
+                        echo 'このEmail addressは既に使われています'. "<br/>";
+                        print <<<EOH
+                        <br>
+                        <br>
+                        <button type="submit"class="btn btn-default" onclick="location.href='./regist.php'">登録画面に戻る</button>
 EOH;
+                      } else {
+                        $stmt = $pdo->prepare("insert into userdata(username, password, account_id, api_key, api_key_secret, access_token, access_token_secret, nickname) values(?, ?, ?, ?, ?, ?, ?, ?)");
+                        $stmt->execute([$username, $password, $account_id, $api_key, $api_key_secret, $access_token, $access_token_secret, $nickname]);
+                        echo '登録完了!';
+                        print <<<EOH
+                        <br>
+                        下のボタンをクリックしてください。
+                        <br>
+                        <br>
+                        <button type="submit"class="btn btn-default" onclick="location.href='./login.html'">ログインページに移動する</button>
+EOH;
+                      }
                     } catch (\Exception $e) {
-                      echo 'このEmail addressはすでに使われています'. "<br/>";
+                      echo 'エラーが発生しました'. "<br/>";
                       print <<<EOH
                       <br>
                       <br>

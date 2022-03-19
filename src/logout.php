@@ -1,3 +1,8 @@
+<?php
+unset($_SESSION['USERNAME']);
+unset($_SESSION['NICKNAME']);
+?>
+
 <!DOCTYPE html>
 <html class='no-js' lang='en'>
   <head>
